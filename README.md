@@ -1,4 +1,3 @@
-SADE
+SADE (Sistema de Avaliação de Docentes)
 ====
-Teste Kuninory
-Teste Eurismar e Luiz Henrique
+Projeto para as disciplinas de Persistência e Concorrência
