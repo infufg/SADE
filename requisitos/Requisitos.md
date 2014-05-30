@@ -48,6 +48,10 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
 | RNF001 | Deve ser possível atualizar as informações de avaliação no sistema. | Essencial | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
+| RNF002 | Linguagem de programação | Essencial | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
+| RNF003 | Banco de dados | Essencial | O banco de dados utilizado será o MySQL. |
+| RNF004 | Quantidade de Avaliações | Essencial | O sistema deve permitir avaliar 10 000 nomes por vez (não simultaneamente). |
+| RNF005 | Interface gráfica | Essencial | O sistema deve possuir uma interface gráfica que ordene os resultados por nome e nota e mostre o executado em tempo real. |
 
 ####4.Informações de Suporte
 #####4.1 Apêndices
