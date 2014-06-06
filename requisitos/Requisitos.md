@@ -40,14 +40,24 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 #####3.1 Requisitos Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
-| RF001 |  Cadastro de docente no sistema | Essencial | O cadastro de docente depende das informações do Departamento Pessoal. |
-| RF002 | Cadastro de atividades no sistema | Essencial | As atividades são definidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. |
-| RF003 | Cadastro de avaliações no sistema | Essencial |  O cadastro de avaliações... |
+| RF001 | Cadastro de Área | Essencial | Os campos relativos a Área são: Código e Nome. | 
+| RF002 | Alterar os dados de uma Área | Essencial | O sistema deve permitir a alteração dos dados de uma Área cadastrada, ou seja, a sua atualização. |
+| RF003 | Exclusão de Área | Essencial | O sistema deve permitir a exclusão permanente de uma Área cadastrada. |
+| RF004 | Cadastro de Atividade no sistema | Essencial | As atividades são definidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Código, Descrição, Quantidade, Multiplicador, Pontuação e Área. |
+| RF005 | Alterar os dados de uma Atividade | Essencial | O sistema deve permitir a alteração dos dados de uma Atividade cadastrada, ou seja, a sua atualização. |
+| RF006 | Exclusão de Atividade | Essencial | O sistema deve permitir a exclusão permanente de uma Atividade cadastrada. |
+| RF007 | O sistema deve ser capaz de ler arquivo com extensão ".sade" | Essencial | Esse arquivo conterá as informações relacionadas aos docentes e suas atividades realizadas. Sendo assim o principal mecanismo de entrada para processamento do sistema. |
+| RF008 | O sistema deve gerar a pontuação de cada docente | Essencial | O cálculo da pontuação será com base nas atividades realizadas por ele, o resultado será obtido aplicando a fórmula associada ao seu perfil. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
+| RF009 | O sistema deve mostrar o resultado das avaliações em uma tabela | Essencial | A tabela terá as seguintes colunas: "Nome do docente", as Áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] sendo de  "I à V" (cada uma sendo uma coluna diferente, que corresponde ao somatório de todas as atividades realizadas que pertencem aquela Área) e "Nota final". O sistema deve ser capaz de ordenar a tabela por "Nome" ou "Nota". |
 
 #####3.2 Requisitos Não-Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
 | RNF001 | Deve ser possível atualizar as informações de avaliação no sistema. | Essencial | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
+| RNF002 | Linguagem de programação | Essencial | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
+| RNF003 | Banco de dados | Essencial | O banco de dados utilizado será o MySQL. |
+| RNF004 | Quantidade de Avaliações | Essencial | O sistema deve permitir avaliar 10 000 nomes por vez (não simultaneamente). |
+| RNF005 | Interface gráfica | Essencial | O sistema deve possuir uma interface gráfica que ordene os resultados por nome e nota e mostre o executado em tempo real. |
 
 ####4.Informações de Suporte
 #####4.1 Apêndices
