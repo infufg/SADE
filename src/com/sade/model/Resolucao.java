@@ -5,14 +5,10 @@
 package com.sade.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +35,7 @@ public class Resolucao implements Serializable {
     @Column(length = 10)
     private String codigo_Resolucao;
     @OneToMany(mappedBy = "resolucao")
-    private List<Atividade> atividades;
+    private List<Atividade> atividades;    
     public Long getIdResolucao() {
         return idResolucao;
     }
@@ -80,7 +76,7 @@ public class Resolucao implements Serializable {
         this.atividades = atividades;
     }
 
-
+    
 
     @Override
     public int hashCode() {
