@@ -1,13 +1,16 @@
 package com.sade.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,7 +27,7 @@ public class Atividade implements Serializable {
     private Long idAtividade;
     @Column(length = 128, nullable = false)
     private String nome;
-    @Column(length = 20)
+    @Column(length = 20)    
     private String codigo;
     @Column
     private String descricao;
@@ -33,8 +36,16 @@ public class Atividade implements Serializable {
 
     
     @ManyToOne
+    @JoinColumn(name = "idResolucao")
     private Resolucao resolucao;
     
+    @OneToMany(mappedBy = "atividade")
+    private List<Atividade> atividades;
+    
+    @ManyToOne
+    @JoinColumn(name = "idAtividade_pai")
+    private Atividade atividade;
+          
     public Long getIdAtividade() {
         return idAtividade;
     }
@@ -81,6 +92,22 @@ public class Atividade implements Serializable {
 
     public void setResolucao(Resolucao resolucao) {
         this.resolucao = resolucao;
+    }
+
+    public List<Atividade> getAtividades() {
+        return atividades;
+    }
+
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
+    }
+
+    public Atividade getAtividade() {
+        return atividade;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
     }
 
 
