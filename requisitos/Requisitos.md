@@ -49,14 +49,14 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 | RF007 | O sistema deve mostrar o resultado das avaliações em uma tabela | Essencial | A tabela terá as seguintes colunas: "Nome do docente", as Áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] sendo de  "I à V" (cada uma sendo uma coluna diferente, que corresponde ao somatório de todas as atividades realizadas que pertencem aquela Área) e "Nota final". |
 | RF008 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nome", esta tabela está descrita no requisito RF007|
 | RF009 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nota", esta tabela está descrita no requisito RF007|
+| RF010 | Deve ser possível atualizar as informações de avaliação no sistema. | Essencial | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
 
 #####3.2 Requisitos Não-Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
-| RNF001 | Deve ser possível atualizar as informações de avaliação no sistema. | Essencial | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
-| RNF002 | Linguagem de programação | Essencial | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
-| RNF003 | Banco de dados | Essencial | O banco de dados utilizado será o MySQL. |
-| RNF004 | Quantidade de Avaliações | Essencial | O sistema deve permitir avaliar 10 000 nomes por vez. |
+| RNF001 | Linguagem de programação | Essencial | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
+| RNF002 | Banco de dados | Essencial | O banco de dados utilizado será o MySQL. |
+| RNF003 | Quantidade de Avaliações | Essencial | O sistema deve permitir avaliar 10 000 nomes por vez. |
 
 ####4.Informações de Suporte
 #####4.1 Apêndices
