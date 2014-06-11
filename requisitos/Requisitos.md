@@ -46,7 +46,9 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 | RF004 | Alterar os dados de uma Atividade | Essencial | O sistema deve permitir a alteração dos dados de uma Atividade cadastrada, ou seja, a sua atualização. |
 | RF005 | O sistema deve ser capaz de ler arquivo com extensão ".sade" | Essencial | Esse arquivo conterá as informações relacionadas aos docentes e suas atividades realizadas. Sendo assim o principal mecanismo de entrada para processamento do sistema. |
 | RF006 | O sistema deve gerar a pontuação de cada docente | Essencial | O cálculo da pontuação será com base nas atividades realizadas por ele, o resultado será obtido aplicando a fórmula associada ao seu perfil. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
-| RF007 | O sistema deve mostrar o resultado das avaliações em uma tabela | Essencial | A tabela terá as seguintes colunas: "Nome do docente", as Áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] sendo de  "I à V" (cada uma sendo uma coluna diferente, que corresponde ao somatório de todas as atividades realizadas que pertencem aquela Área) e "Nota final". O sistema deve ser capaz de ordenar a tabela por "Nome" ou "Nota". |
+| RF007 | O sistema deve mostrar o resultado das avaliações em uma tabela | Essencial | A tabela terá as seguintes colunas: "Nome do docente", as Áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] sendo de  "I à V" (cada uma sendo uma coluna diferente, que corresponde ao somatório de todas as atividades realizadas que pertencem aquela Área) e "Nota final". |
+| RF008 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nome", esta tabela está descrita no requisito RF007|
+| RF009 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nota", esta tabela está descrita no requisito RF007|
 
 #####3.2 Requisitos Não-Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
