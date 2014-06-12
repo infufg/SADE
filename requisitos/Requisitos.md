@@ -38,6 +38,8 @@ O aplicativo de software a ser desenvolvido é um sistema de pontuação da aval
 Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade cada vez maior da inclusão dos processos manuais dentro da praticidade dos meios tecnológicos.  O objetivo geral do SADE é e permitir que a Universidade Federal de Goiás avalie docentes e departamentos. Observa-se a necessidade de um sistema que possa ser atualizado sem modificações drásticas relacionadas com a mudança das resoluções nas quais as avaliações se apoiam.
   
 ####3. Exigências Específicas
+A prioridade dos requisitos está expressa em uma escala de 1 a 5, sendo 1 a menor prioridade e 5 a maior prioridade.
+
 #####3.1 Requisitos Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
@@ -60,9 +62,9 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 #####3.2 Requisitos Não-Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
-| RNF001 | Linguagem de programação | Essencial | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
-| RNF002 | Banco de dados | Essencial | O banco de dados utilizado será o MySQL. |
-| RNF003 | Quantidade de Avaliações | Essencial | O sistema deve permitir avaliar 10 000 nomes por vez. |
+| RNF001 | Linguagem de programação | 5 | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
+| RNF002 | Banco de dados | 5 | O banco de dados utilizado será o MySQL. |
+| RNF003 | Quantidade de Avaliações | 5 | O sistema deve permitir avaliar 10 000 nomes por vez. |
 
 ####4.Informações de Suporte
 #####4.1 Apêndices
