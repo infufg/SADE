@@ -23,13 +23,14 @@ Este documento de especificação de requisitos de software apresenta a descriç
 O propósito deste documento é apresentar os requisitos funcionais e não funcionais, estabelecer o escopo do sistema e o que será abordado no desenvolvimento.
   
 #####1.2 Escopo
-O aplicativo de software a ser desenvolvido é um sistema de avaliação de docentes, SADE. O SADE deve gerenciar, facilitar e permitir que a Universidade Federal de Goiás avalie docentes e departamentos.
+O aplicativo de software a ser desenvolvido é um sistema de pontuação da avaliação de docentes, SADE. O SADE deve gerenciar, facilitar e permitir que a Universidade Federal de Goiás avalie docentes e departamentos. O aplicativo deve disponibilizar uma API para CRUD para persistir e trabalhar com os dados das avaliações de docentes. O cadastro de professores não entrará no escopo deste software.
   
 #####1.3 Definições, Acrônimos e Abreviaturas
 | Conceito | Definição |
 |----------|-----------|
 | SADE | Sistema de Avaliação de Docentes |
-| CAD | Comissão de Avaliação Docente  |
+| CRUD | Create, retrieve, update, delete. (Criar, recuperar, atualizar e deletar). Operações básicas de persistência de dados.  |
+| API | Application Programming Interface (Interface de Programação de Aplicativos) |
 | RF | Requisito Funcional  |
 | RNF | Requisito Não-funcional  |
 
