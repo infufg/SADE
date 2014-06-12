@@ -43,14 +43,19 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 |---------------|-----------|-----------|----------|
 | RF001 | Cadastro de Área | Essencial | Os campos relativos a Área são: Código e Nome. | 
 | RF002 | Alterar os dados de uma Área | Essencial | O sistema deve permitir a alteração dos dados de uma Área cadastrada, ou seja, a sua atualização. |
-| RF003 | Cadastro de Atividade no sistema | Essencial | As atividades são definidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Código, Resolução, Descrição, Quantidade, Multiplicador, Pontuação e Área. |
+| RF003 | Cadastro de Atividade no sistema | Essencial | As atividades são definidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Código, Resolução, Descrição, Quantidade, Divisor, Pontuação e Área. |
 | RF004 | Alterar os dados de uma Atividade | Essencial | O sistema deve permitir a alteração dos dados de uma Atividade cadastrada, ou seja, a sua atualização. |
 | RF005 | O sistema deve ser capaz de ler arquivo com extensão ".sade" | Essencial | Esse arquivo conterá as informações relacionadas aos docentes e suas atividades realizadas. Sendo assim o principal mecanismo de entrada para processamento do sistema. |
-| RF006 | O sistema deve gerar a pontuação de cada docente | Essencial | O cálculo da pontuação será com base nas atividades realizadas por ele, o resultado será obtido aplicando a fórmula associada ao seu perfil. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
-| RF007 | O sistema deve mostrar o resultado das avaliações em uma tabela | Essencial | A tabela terá as seguintes colunas: "Nome do docente", as Áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] sendo de  "I à V" (cada uma sendo uma coluna diferente, que corresponde ao somatório de todas as atividades realizadas que pertencem aquela Área) e "Nota final". |
-| RF008 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nome", esta tabela está descrita no requisito RF007|
-| RF009 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nota", esta tabela está descrita no requisito RF007|
-| RF010 | Deve ser possível atualizar as informações de avaliação no sistema. | Essencial | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
+| RF006 | O sistema deve gerar a nota final de cada docente | Essencial | O cálculo da nota final será com base nas atividades realizadas por ele, o resultado deve ser obtido aplicando a fórmula descrita no requisito RF007. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
+| RF007 | Fórmula para calcular a nota final de um professor| Essencial | A fórmula é: Σn, onde n = Notas das atividade, a nota de cada atividade deve ser obtida usando a fórmula do requisito RF008. |
+| RF008 | Fórmula para calcular a nota da atividade | Essencial | A fórmula é: (p * q / d), onde p = Pontuação, q = Quantidade e d = Divisor. Todas essas informações são da atividade em questão.
+| RF009 | O sistema deve mostrar o resultado das avaliações em uma tabela | Essencial | A tabela terá as seguintes colunas: "Nome do docente", as Áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] sendo de  "I à V" (cada uma sendo uma coluna diferente) e "Nota final". |
+| RF010 | Coluna "Nome do docente" da tabela de resultado | Essencial | Esta coluna se refere ao nome do docente avaliado, este nome será informado no arquivo ".sade". |
+| RF011 | Colunas "I à V" da tabela de resultado | Essencial | Estas coluna se referem as áreas estabelecidas na [RESOLUÇÃO - CONSUNI Nº 32/2013] [1] cada uma sendo uma coluna diferente que corresponde ao somatório da pontuação de todas as atividades realizadas que pertencem aquela Área. |
+| RF012 | Coluna "Nota final" da tabela de resultado | Essencial | Esta coluna se refere ao somatório da pontuação de todas as áreas descritas no requisito RF009.  |
+| RF013 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nome", esta tabela está descrita no requisito RF009|
+| RF014 | Ordenação da tabela de resultado das avaliações | Essencial | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nota", esta tabela está descrita no requisito RF009|
+| RF015 | Deve ser possível atualizar as informações de avaliação no sistema. | Essencial | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
 
 #####3.2 Requisitos Não-Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
