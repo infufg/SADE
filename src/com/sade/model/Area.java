@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sade.model;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +13,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author alunoinf
+ * @author Eurismar Pires Borges
  */
 @Entity
 public class Area implements Serializable {

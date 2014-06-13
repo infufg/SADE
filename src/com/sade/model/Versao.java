@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sade.model;
 
 import java.io.Serializable;
@@ -17,7 +13,7 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author alunoinf
+ * @author Eurismar Pires Borges
  */
 @Entity
 public class Versao implements Serializable {
