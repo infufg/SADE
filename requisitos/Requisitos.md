@@ -66,9 +66,10 @@ A prioridade dos requisitos está expressa em uma escala de 1 a 5, sendo 1 a men
 |---------------|-----------|-----------|----------|
 | RNF001 | Linguagem de programação | 5 | O sistema deverá ser desenvolvido utilizando a linguagem Java. |
 | RNF002 | Banco de dados | 5 | O banco de dados utilizado será o MySQL. |
-| RNF003 | Quantidade de Avaliações | 5 | O sistema deve permitir avaliar 10 000 nomes por vez. |
+| RNF003 | Quantidade de Avaliações | 5 | O sistema deve permitir avaliar pelo menos 10 000 docentes por vez. |
 | RNF004 | Arquivo | 5 | O sistema deve ser capaz de interpretar arquivos ".sade" |
-| RNF005 | API | 5 | A API CRUD deve ser disponibilizada para outros softwares |
+| RNF005 | API | 5 | A API CRUD deve ser disponibilizada para outros softwares. |
+| RNF006 | Quantidade de Atividades | 5 | O sistema deve ser capaz de processar pelo menos 100 atividades para cada docente. |
 
 ####4.Informações de Suporte
 #####4.1 Apêndices
