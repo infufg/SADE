@@ -46,7 +46,7 @@ A prioridade dos requisitos está expressa em uma escala de 1 a 5, sendo 1 a men
 |---------------|-----------|-----------|----------|
 | RF001 | Cadastro de Área | 5 | Os campos relativos a Área são: Código e Nome. | 
 | RF002 | Alterar os dados de uma Área | 3 | O sistema deve permitir a alteração dos dados de uma Área cadastrada, ou seja, a sua atualização. |
-| RF003 | Cadastro de Atividade no sistema | 5 | As atividades são definidas em resoluções, como a [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Código, Resolução, Descrição, Quantidade, Divisor, Pontuação e Área. |
+| RF003 | Cadastro de Atividade no sistema | 5 | As atividades são definidas em resoluções, como a [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Código, Resolução, Descrição, Quantidade, Divisor, Pontuação, Limite de Pontuação e Área. |
 | RF004 | Alterar os dados de uma Atividade | 4 | O sistema deve permitir a alteração dos dados de uma Atividade cadastrada, ou seja, a sua atualização. |
 | RF005 | O sistema deve ser capaz de ler arquivo com extensão ".sade" | 5 | O arquivo ".sade" conterá as informações relacionadas aos docentes e suas atividades realizadas. Sendo assim o principal mecanismo de entrada para processamento do sistema. |
 | RF006 | O sistema deve gerar a nota final de cada docente | 5 | O cálculo da nota final será com base nas atividades realizadas por ele, o resultado deve ser obtido aplicando a fórmula descrita no requisito RF007. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
