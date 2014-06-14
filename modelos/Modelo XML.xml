@@ -1,0 +1,12 @@
+<!-- Essas são as informações necessárias para o arquivo de entrada informado pelo cliente.
+Essa estrutura foi validada junto  ao professor.
+O documento contém docentes os quais possuem atividades vinculadas, essas atividades devem possuir um código para 
+recuperação pelo sistema e a quantidade da mesma que será usado na fórmula para calcular a pontuação.
+-atributos com ""(aspas) são do tipo String
+-os sem aspas são inteiros-->
+
+<doc>
+	<docente codigo=x nome="x">
+		<atividade codigo=x quantidade=x/>
+	</docente>
+</doc>
