@@ -1,16 +1,12 @@
 package com.sade.model;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,40 +14,59 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Atividade implements Serializable {
-
     private static final long serialVersionUID = 1L;
-    
-    @Column()
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idAtividade;
-    @Column(length = 128, nullable = false)
-    private String nome;
-    @Column(length = 20)    
-    private String codigo;
-    @Column
-    private String descricao;
-    @Column
-    private Double pontuacao;
+    @Column(name = "id_atividade")
+    private Long id;
 
+    @JoinColumn(name = "id_area",referencedColumnName = "id_area")
+    private Area area;
     
-    @ManyToOne
-    @JoinColumn(name = "idResolucao")
-    private Resolucao resolucao;
+    @JoinColumn(name = "id_versao",referencedColumnName = "id_versao")
+    private Versao versao;
     
-    @OneToMany(mappedBy = "atividade")
-    private List<Atividade> atividades;
+    @Column
+    private String nome;
     
-    @ManyToOne
-    @JoinColumn(name = "idAtividade_pai")
-    private Atividade atividade;
-          
-    public Long getIdAtividade() {
-        return idAtividade;
+    @Column
+    private String codigo;
+    
+    @Column(name = "limite_pontuacao")
+    private String descricao;
+    
+ 
+    @Column
+    private Double limitePontuacao;
+    
+    @Column
+    private Integer quantidade;
+    
+    @Column
+    private Integer divisor;    
+    
+    public Long getId() {
+        return id;
     }
 
-    public void setIdArea(Long idArea) {
-        this.idAtividade = idArea;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public Versao getVersao() {
+        return versao;
+    }
+
+    public void setVersao(Versao versao) {
+        this.versao = versao;
     }
 
     public String getNome() {
@@ -78,54 +93,49 @@ public class Atividade implements Serializable {
         this.descricao = descricao;
     }
 
-    public Double getPontuacao() {
-        return pontuacao;
+    public Double getLimitePontuacao() {
+        return limitePontuacao;
     }
 
-    public void setPontuacao(Double pontuacao) {
-        this.pontuacao = pontuacao;
-    }
-
-    public Resolucao getResolucao() {
-        return resolucao;
-    }
-
-    public void setResolucao(Resolucao resolucao) {
-        this.resolucao = resolucao;
-    }
-
-    public List<Atividade> getAtividades() {
-        return atividades;
-    }
-
-    public void setAtividades(List<Atividade> atividades) {
-        this.atividades = atividades;
-    }
-
-    public Atividade getAtividade() {
-        return atividade;
-    }
-
-    public void setAtividade(Atividade atividade) {
-        this.atividade = atividade;
+    public void setLimitePontuacao(Double limitePontuacao) {
+        this.limitePontuacao = limitePontuacao;
     }
 
 
+ 
 
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Integer getDivisor() {
+        return divisor;
+    }
+
+    public void setDivisor(Integer divisor) {
+        this.divisor = divisor;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idAtividade != null ? idAtividade.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Atividade)) {
             return false;
         }
         Atividade other = (Atividade) object;
-        if ((this.idAtividade == null && other.idAtividade != null) || (this.idAtividade != null && !this.idAtividade.equals(other.idAtividade))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -133,6 +143,7 @@ public class Atividade implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sade.model.Atividade[ id=" + idAtividade + " ]";
+        return "com.sade.model.Atividade[ id=" + id + " ]";
     }
+    
 }
