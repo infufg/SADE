@@ -1,4 +1,4 @@
-package com.sade.model.dao;
+package com.sade.dao;
 
 import java.util.List;
 
