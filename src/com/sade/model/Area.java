@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
  * @author Eurismar Pires Borges
  */
 @Entity
-public class Area implements Serializable {
+public class Area implements Serializable, Persistable<Long> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
  * @author Eurismar Pires Borges
  */
 @Entity
-public class Versao implements Serializable {
+public class Versao implements Serializable, Persistable<Long> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

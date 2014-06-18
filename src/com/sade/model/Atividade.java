@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
  * @author Eurismar Pires Borges
  */
 @Entity
-public class Atividade implements Serializable {
+public class Atividade implements Serializable, Persistable<Long> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
