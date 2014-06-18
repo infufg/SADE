@@ -46,20 +46,27 @@ A prioridade dos requisitos está expressa em uma escala de 1 a 5, sendo 1 a men
 |---------------|-----------|-----------|----------|
 | RF001 | Cadastro de Área | 5 | Os campos relativos a Área são: Código e Nome. | 
 | RF002 | Alterar os dados de uma Área | 3 | O sistema deve permitir a alteração dos dados de uma Área cadastrada, ou seja, a sua atualização. |
-| RF003 | Cadastro de Atividade no sistema | 5 | As atividades são definidas nos documentos, como a [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Nome, Código, Descrição, Pontuação, Limite de Pontuação, Quantidade, Divisor, Versão e Área. |
-| RF004 | Alterar os dados de uma Atividade | 4 | O sistema deve permitir a alteração dos dados de uma Atividade cadastrada, ou seja, a sua atualização. |
-| RF005 | O sistema deve ser capaz de ler arquivo com extensão ".sade" | 5 | O arquivo ".sade" conterá as informações relacionadas aos docentes e suas atividades realizadas. Sendo assim o principal mecanismo de entrada para processamento do sistema. |
-| RF006 | O sistema deve gerar a nota final de cada docente | 5 | O cálculo da nota final será com base nas atividades realizadas por ele, o resultado deve ser obtido aplicando a fórmula descrita no requisito RF007. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
-| RF007 | Fórmula para calcular a nota final de um professor| 5 | A fórmula é: Σn, onde n = Notas das atividade, a nota de cada atividade deve ser obtida usando a fórmula do requisito RF008. |
-| RF008 | Fórmula para calcular a nota da atividade | 5 | A fórmula é: (p * q / d), onde p = Pontuação, q = Quantidade e d = Divisor. Todas essas informações são da atividade em questão.
-| RF009 | O sistema deve mostrar o resultado das avaliações em uma tabela | 5 | A tabela terá as seguintes colunas: "Nome do docente", uma coluna para cada Área estabelecida na Documento e "Nota final". |
-| RF010 | Coluna "Nome do docente" da tabela de resultado | 5 | A coluna "Nome do docente"  se refere ao nome do docente avaliado, este nome será informado no arquivo ".sade". |
-| RF011 | Colunas referentes às Áreas da tabela de resultado | 5 | As colunas referentes às Áreas correspondem ao somatório da pontuação de todas as atividades realizadas que pertencem aquela Área. |
-| RF012 | Coluna "Nota final" da tabela de resultado | 5 | A coluna "Nota final" se refere ao somatório da pontuação de todas as áreas descritas no requisito RF011. |
-| RF013 | Ordenação da tabela de resultado das avaliações | 3 | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nome" |
-| RF014 | Ordenação da tabela de resultado das avaliações | 3 | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nota" |
-| RF015 | Deve ser possível atualizar as informações de avaliação no sistema. | 5 | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
-| RF016 | Deve ser disponibilizada uma API para CRUD | 5 | A atualização descrita no RF015 deve ser realizada através de uma API |
+| RF003 | Excluir uma Área | 5 | O sistema deve permitir excluir uma Área existente. |
+| RF004 | Cadastro de Atividade no sistema | 5 | As atividades são definidas nos documentos, como a [RESOLUÇÃO - CONSUNI Nº 32/2013] [1]. Os campos relativos a Atividade são: Nome, Código, Descrição, Pontuação, Limite de Pontuação, Quantidade, Divisor, Versão e Área. |
+| RF005 | Alterar os dados de uma Atividade | 4 | O sistema deve permitir a alteração dos dados de uma Atividade cadastrada, ou seja, a sua atualização. |
+| RF006 | Excluir uma Atividade | 5 | O sistema deve permitir excluir uma Atividade existente. |
+| RF007 | O sistema deve ser capaz de ler arquivo com extensão ".sade" | 5 | O arquivo ".sade" conterá as informações relacionadas aos docentes e suas atividades realizadas. Sendo assim o principal mecanismo de entrada para processamento do sistema. |
+| RF008 | O sistema deve gerar a nota final de cada docente | 5 | O cálculo da nota final será com base nas atividades realizadas por ele, o resultado deve ser obtido aplicando a fórmula descrita no requisito RF009. Essas informações sobre quais atividades o docente realizou estarão em um arquivo ".sade".|
+| RF009 | Fórmula para calcular a nota final de um professor| 5 | A fórmula é: Σn, onde n = Notas das atividade, a nota de cada atividade deve ser obtida usando a fórmula do requisito RF010. |
+| RF010 | Fórmula para calcular a nota da atividade | 5 | A fórmula é: (p * q / d), onde p = Pontuação, q = Quantidade e d = Divisor. Todas essas informações são da atividade em questão.
+| RF011 | O sistema deve mostrar o resultado das avaliações em uma tabela | 5 | A tabela terá as seguintes colunas: "Nome do docente", uma coluna para cada Área estabelecida na Documento e "Nota final". |
+| RF012 | Coluna "Nome do docente" da tabela de resultado | 5 | A coluna "Nome do docente"  se refere ao nome do docente avaliado, este nome será informado no arquivo ".sade". |
+| RF013 | Colunas referentes às Áreas da tabela de resultado | 5 | As colunas referentes às Áreas correspondem ao somatório da pontuação de todas as atividades realizadas que pertencem aquela Área. |
+| RF014 | Coluna "Nota final" da tabela de resultado | 5 | A coluna "Nota final" se refere ao somatório da pontuação de todas as áreas. |
+| RF015 | Ordenação da tabela de resultado das avaliações | 3 | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nome" |
+| RF016 | Ordenação da tabela de resultado das avaliações | 3 | O sistema deve ser capaz de ordenar a tabela de resultado das avaliações por "Nota" |
+| RF017 | Deve ser possível atualizar as informações de avaliação no sistema. | 5 | A atualização não deve ser realizada por meio de alterações no código fonte, mas sim por meio das informações cadastradas no banco de dados. |
+| RF018 | Deve ser disponibilizada uma API para CRUD | 5 | A atualização descrita no RF017 deve ser realizada através de uma API |
+| RF019 | Cadastro de Versão de Documento | 5 | Os campos relativos a Versão de Documento são: Código, Periodo Inicial e Período Final. |
+| RF020 | Alterar os dados de uma Versão de Documento | 5 | O sistema deve permitir a alteração dos dados de uma Versão de Documento cadastrada, ou seja, a sua atualização. |
+| RF021 | Excluir uma Versão de Documento | 5 | O sistema deve permitir excluir uma Versão de Documento existente. |
+| RF022 | Lista das Versões de Documento disponíveis| 4 | O sistema deve listar todas as versões dos documentos disponíveis na base de dados. |
+| RF023 | Escolha da Versão de Documento | 3 | O sistema deve permitir a escolha da versão do documento que será utilizado para avaliação dos docentes. | 
 
 #####3.2 Requisitos Não-Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
