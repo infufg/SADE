@@ -41,7 +41,7 @@ Com o crescente avanço da tecnologia nos últimos tempos, vê-se a necessidade 
 ####3. Exigências Específicas
 A prioridade dos requisitos está expressa em uma escala de 1 a 5, sendo 1 a menor prioridade e 5 a maior prioridade.
 
-#####3.1 Requisitos Funcionais Somar 2
+#####3.1 Requisitos Funcionais
 | Identificação | Descrição | Prioridade | Detalhes |
 |---------------|-----------|-----------|----------|
 | RF001 | Cadastro de Área | 5 | Os campos relativos a Área são: Código e Nome. | 
