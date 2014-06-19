@@ -24,6 +24,7 @@ O propósito deste documento é apresentar os requisitos funcionais e não funci
   
 #####1.2 Escopo
 O aplicativo de software a ser desenvolvido é um sistema de pontuação da avaliação de docentes, SADE. O SADE deve gerenciar, facilitar e permitir que a Universidade Federal de Goiás avalie docentes e departamentos. O aplicativo deve disponibilizar uma API para CRUD para persistir e trabalhar com os dados das avaliações de docentes. O cadastro de professores não entrará no escopo deste software.
+![Imgur](http://i.imgur.com/pJGGrQY.png)
   
 #####1.3 Definições, Acrônimos e Abreviaturas
 | Conceito | Definição |
