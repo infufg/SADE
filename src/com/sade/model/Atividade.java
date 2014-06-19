@@ -108,8 +108,8 @@ public class Atividade implements Serializable, Persistable<Long> {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = this.quantidade;
     }
 
     public Integer getDivisor() {
