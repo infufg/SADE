@@ -16,7 +16,7 @@ Essa documentação tem como objetivo informar sobre o ambiente necessário para
 * Alteração de dados de uma versão de Documento.
 * Exclusão de versão de documentos.
 * Listagem com versões de documentos disponíveis.
-* Escolha de Versão de.
+* Escolha de Versão do documento.
 
 ##Visão de implantação
 Banco de dados MySQL versão 5.6.19
