@@ -19,8 +19,11 @@ Essa documentação tem como objetivo informar sobre o ambiente necessário para
 * Escolha de Versão do documento.
 
 ##Visão de implantação
-Banco de dados MySQL versão 5.6.19
-Download disponível em: http://dev.mysql.com/downloads/mysql/
+* Banco de dados MySQL versão 5.6.19
+  * Download disponível em: http://dev.mysql.com/downloads/mysql/
+* Maquina virtual Java
+  * Download disponível em: http://www.oracle.com/technetwork/pt/java/javase/downloads/jre7-downloads-1880261.html
+
 ##Visão de pacotes
 ##Configuração
 
