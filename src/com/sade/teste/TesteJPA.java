@@ -1,19 +1,12 @@
 package com.sade.teste;
 
-import com.sade.model.Atividade;
-import com.sade.model.Resolucao;
-import java.awt.geom.Area;
-import java.util.Calendar;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 /**
  *
  * @author Eurismar Pires Borges
  */
 public class TesteJPA {
-    public static void main(String[] args) {
+    // TODO corrigir
+    /*public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SADEPU");
         EntityManager em = emf.createEntityManager();
         
@@ -38,5 +31,5 @@ public class TesteJPA {
         
         em.close();
         emf.close();
-    }
+    }*/
 }
