@@ -15,24 +15,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * Created by Vinicius on 25/06/2014.
  * Classe responsavel por ler um arquivo xml e ler
  */
-public class ParserXML {
+public class XMLParser implements DocenteXMLParserDelegate {
 
+    //constantes com os nomes das tags
     private final String DOCUMENT0 = "doc";
-    private final String ATIVIDADE = "atividade";
     private final String DOCENTE = "docente";
-    private final String CODIGO = "codigo";
-    private final String NOME = "nome";
-    private final String QUANTIDADE = "quantidade";
+
+    ConcurrentSkipListSet<Docente> docentes;
+
+    public ConcurrentSkipListSet<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public XMLParser() {
+        this.docentes = new ConcurrentSkipListSet<Docente>();
+    }
 
     /**
      * Recupera todoas as atividades para cada docente contido no arquivo XML especificado.
      *
-     * @return Lit<Docente> contendo todos os docentes encontrados.
+     * @return java.util.List<Docente> contendo todos os docentes encontrados.
      * @throws java.io.FileNotFoundException
      */
     public List<Docente> getDocentesXML(File file) throws FileNotFoundException {
@@ -59,12 +68,13 @@ public class ParserXML {
                     Element currentElement = (Element) elements.item(i);
 
                     if (currentElement.getNodeName().equals(DOCENTE)) {
-                        docentesEncontrados.add(nodeParaDocente(currentElement));
+
+                        //docentesEncontrados.add(nodeParaDocente(currentElement));
+                        //cria uma nova thread e parte para o proximo elemento.
                     }
                 }
 
             }
-
 
         } catch (ParserConfigurationException e) {
 
@@ -125,60 +135,11 @@ public class ParserXML {
 
     }
 
-    /**
-     * Lê um nó xml e converte para um objeto Docente
-     * @param node só de um docente.
-     * @return DOcente
-     */
-    public Docente nodeParaDocente(Node node) {
-        Docente docente = new Docente();
-        List<Atividade> atividades = new ArrayList<Atividade>();
+    @Override
+    public void parsedDocente(Docente docente) {
 
-        NamedNodeMap map = node.getAttributes();
-        docente.setId(map.getNamedItem(CODIGO).getTextContent());
-        docente.setNome(map.getNamedItem(NOME).getTextContent());
+        docentes.add(docente);
 
-        NodeList nodeList = node.getChildNodes();
-
-        for (int i = 0; i < nodeList.getLength(); i++) {
-
-            Element currentElement = (Element) nodeList.item(i);
-
-            if (currentElement.getNodeName().equals(ATIVIDADE)) {
-
-                if (currentElement.getNodeName().equals(ATIVIDADE)) {
-
-                    atividades.add(nodeParaAtividade(currentElement));
-                }
-
-            }
-
-        }
-
-        docente.setAtividades(atividades);
-
-        return docente;
     }
-
-    /**
-     * Converte um nó em um objeto atividade
-     *
-     * @param node nó que representa a atividade
-     * @return Objeto Atividade
-     */
-    public Atividade nodeParaAtividade(Node node) {
-        Atividade atividade = new Atividade();
-
-        NamedNodeMap map = node.getAttributes();
-
-        //pega os atributos da tag e usa como valores pra atividade
-        atividade.setCodigo(map.getNamedItem(CODIGO).getTextContent());
-        int quantidade = Integer.parseInt(map.getNamedItem(QUANTIDADE).getTextContent());
-        atividade.setQuantidade(quantidade);
-
-
-        return atividade;
-    }
-
-
 }
+
