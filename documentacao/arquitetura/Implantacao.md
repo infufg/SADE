@@ -24,7 +24,6 @@ Essa documentação tem como objetivo informar sobre o ambiente necessário para
 * Maquina virtual Java
   * Download disponível em: http://www.oracle.com/technetwork/pt/java/javase/downloads/jre7-downloads-1880261.html
 
-##Visão de pacotes
 ##Configuração
 1. Apos instalar o MySQL, crie um banco de dados.
 2. Abra o arquivo "persistence.xml" e altere o valor da linha 9 (property name="javax.persistence.jdbc.url" value="Coloque aqui o local de seu banco") colocando a localização de seu banco de dados.
