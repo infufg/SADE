@@ -1,15 +1,9 @@
 package com.sade.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 /**
- *
  * @author Eurismar Pires Borges
  */
 @Entity
@@ -20,31 +14,33 @@ public class Atividade implements Serializable, Persistable<Long> {
     @Column(name = "id_atividade")
     private Long id;
 
-    @JoinColumn(name = "id_area",referencedColumnName = "id_area")
+    @JoinColumn(name = "id_area", referencedColumnName = "id_area")
     private Area area;
-    
-    @JoinColumn(name = "id_versao",referencedColumnName = "id_versao")
+
+    @JoinColumn(name = "id_versao", referencedColumnName = "id_versao")
     private Versao versao;
-    
+
     @Column
     private String nome;
-    
+
     @Column
     private String codigo;
-    
+
     @Column(name = "limite_pontuacao")
     private String descricao;
-    
- 
+
+    @Column
+    private Double pontuacao;
+
     @Column
     private Double limitePontuacao;
-    
+
     @Column
     private Integer quantidade;
-    
+
     @Column
-    private Integer divisor;    
-    
+    private Integer divisor;
+
     public Long getId() {
         return id;
     }
@@ -101,15 +97,20 @@ public class Atividade implements Serializable, Persistable<Long> {
         this.limitePontuacao = limitePontuacao;
     }
 
+    public Double getPontuacao() {
+        return pontuacao;
+    }
 
- 
+    public void setPontuacao(Double pontuacao) {
+        this.pontuacao = pontuacao;
+    }
 
     public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = this.quantidade;
     }
 
     public Integer getDivisor() {
@@ -120,7 +121,6 @@ public class Atividade implements Serializable, Persistable<Long> {
         this.divisor = divisor;
     }
 
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -145,5 +145,5 @@ public class Atividade implements Serializable, Persistable<Long> {
     public String toString() {
         return "com.sade.model.Atividade[ id=" + id + " ]";
     }
-    
+
 }
