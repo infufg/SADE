@@ -1,7 +1,7 @@
-package main.com.sade.util;
+package com.sade.util;
 
 import com.sade.model.Atividade;
-import main.com.sade.model.Docente;
+import com.sade.model.Docente;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
