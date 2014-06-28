@@ -67,4 +67,7 @@ public class VersaoService {
     public List<Versao> list() {
         return dao.list();
     }
+    public Versao get(Long idVersao){        
+        return dao.get(idVersao);        
+    }    
 }

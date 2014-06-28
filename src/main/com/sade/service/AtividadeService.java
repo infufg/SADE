@@ -67,5 +67,8 @@ public class AtividadeService {
     public List<Atividade> list() {
         return dao.list();
     }
+    public Atividade get(Long idAtividade){        
+        return dao.get(idAtividade);
+    }    
 }
 

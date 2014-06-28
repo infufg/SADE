@@ -1,4 +1,4 @@
-package com.sade.service;
+package main.com.sade.service;
 
 import com.sade.dao.AreaDao;
 import com.sade.manager.SimpleEntityManager;
@@ -67,4 +67,7 @@ public class AreaService {
     public List<Area> list() {
         return dao.list();
     }
+  public Area get(Long idArea){        
+        return dao.get(idArea);
+    }       
 }
