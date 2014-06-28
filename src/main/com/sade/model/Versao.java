@@ -1,4 +1,4 @@
-package com.sade.model;
+package main.com.sade.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -100,6 +100,14 @@ public class Versao implements Serializable, Persistable<Long> {
     @Override
     public String toString() {
         return "com.sade.model.Versao[ id=" + id + " ]";
+    }
+    
+    public void validate() {
+        //verifica se o periodo inicial não é superior ao final
+        if (periodoInicial.compareTo(periodoFinal) > 0){
+            throw new IllegalArgumentException("O período inicial não pode ser"
+                    + "superior ao período final.");
+        }
     }
     
 }

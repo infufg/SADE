@@ -1,6 +1,6 @@
-package com.sade.dao;
+package main.com.sade.dao;
 
-import com.sade.model.Persistable;
+import main.com.sade.model.Persistable;
 
 import javax.persistence.EntityManager;
 import java.lang.reflect.ParameterizedType;

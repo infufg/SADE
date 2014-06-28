@@ -1,6 +1,6 @@
-package com.sade.dao;
+package main.com.sade.dao;
 
-import com.sade.model.Versao;
+import main.com.sade.model.Versao;
 
 import javax.persistence.EntityManager;
 

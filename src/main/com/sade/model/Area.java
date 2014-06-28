@@ -1,4 +1,4 @@
-package com.sade.model;
+package main.com.sade.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -108,6 +108,12 @@ public class Area implements Serializable, Persistable<Long> {
     @Override
     public String toString() {
         return "com.sade.model.Area[ id=" + id + " ]";
+    }
+    
+    public void validate() {
+        if (nome == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
     }
     
 }

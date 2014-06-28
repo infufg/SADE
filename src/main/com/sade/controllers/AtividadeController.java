@@ -1,6 +1,6 @@
-package com.sade.controllers;
+package main.com.sade.controllers;
 
-import com.sade.model.Atividade;
+import main.com.sade.model.Atividade;
 import java.util.List;
 
 /**

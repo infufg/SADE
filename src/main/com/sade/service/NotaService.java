@@ -1,6 +1,6 @@
-package com.sade.service;
+package main.com.sade.service;
 
-import com.sade.model.Atividade;
+import main.com.sade.model.Atividade;
 
 import java.math.BigDecimal;
 import java.util.List;

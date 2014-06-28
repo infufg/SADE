@@ -1,4 +1,4 @@
-package com.sade.model;
+package main.com.sade.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -144,6 +144,12 @@ public class Atividade implements Serializable, Persistable<Long> {
     @Override
     public String toString() {
         return "com.sade.model.Atividade[ id=" + id + " ]";
+    }
+    
+    public void validate() {
+        if (nome == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
     }
 
 }

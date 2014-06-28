@@ -1,6 +1,6 @@
-package com.sade.dao;
+package main.com.sade.dao;
 
-import com.sade.model.Area;
+import main.com.sade.model.Area;
 
 import javax.persistence.EntityManager;
 
