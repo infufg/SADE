@@ -1,6 +1,7 @@
 package com.sade.controllers;
 
 import com.sade.model.Atividade;
+import com.sade.service.AtividadeService;
 import java.util.List;
 
 /**
@@ -9,29 +10,24 @@ import java.util.List;
  */
 public class AtividadeController {
     
-    public Atividade save(Atividade atividade){
-        //TODO esperando service
-        return null;
+    public Atividade save(Atividade atividade){        
+        return new AtividadeService().save(atividade);
     }
     
     public Atividade update(Atividade atividade){
-        //TODO esperando service
-        return null;
+        return new AtividadeService().update(atividade);
     }
     
-    public boolean delete(Atividade atividade){
-        //TODO esperando service
-        return false;
+    public boolean delete(Atividade atividade){        
+        return new AtividadeService().delete(atividade);
     }
     
-    public List<Atividade> list(){
-        //TODO esperando service
-        return null;
+    public List<Atividade> list(){        
+        return new AtividadeService().list();
     }
     
-    public Atividade get(Long idAtividade){
-        //TODO esperando service
-        return null;
+    public Atividade get(Long idAtividade){        
+        return new AtividadeService().get(idAtividade);
     }
     
 }

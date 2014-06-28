@@ -1,6 +1,7 @@
 package com.sade.controllers;
 
 import com.sade.model.Versao;
+import com.sade.service.VersaoService;
 import java.util.List;
 
 /**
@@ -10,28 +11,23 @@ import java.util.List;
 public class VersaoController {
     
     public Versao save(Versao versao){
-        //TODO esperando service
-        return null;
+        return new VersaoService().save(versao);        
     }
     
     public Versao update(Versao versao){
-        //TODO esperando service
-        return null;
+        return new VersaoService().update(versao);        
     }
     
-    public boolean delete(Versao versao){
-        //TODO esperando service
-        return false;
+    public boolean delete(Versao versao){        
+        return new VersaoService().delete(versao);
     }
     
-    public List<Versao> list(){
-        //TODO esperando service
-        return null;
+    public List<Versao> list(){        
+        return new VersaoService().list();
     }
     
-    public Versao get(Long idVersao){
-        //TODO esperando service
-        return null;
+    public Versao get(Long idVersao){        
+        return new VersaoService().get(idVersao);
     }
 }
 

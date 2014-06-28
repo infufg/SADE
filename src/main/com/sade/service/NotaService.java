@@ -1,4 +1,4 @@
-package com.sade.service;
+package main.com.sade.service;
 
 import com.sade.model.Atividade;
 
