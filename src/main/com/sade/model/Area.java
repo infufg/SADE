@@ -110,4 +110,10 @@ public class Area implements Serializable, Persistable<Long> {
         return "com.sade.model.Area[ id=" + id + " ]";
     }
     
+    public void validate() {
+        if (nome == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
+    }
+    
 }

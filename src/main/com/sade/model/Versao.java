@@ -102,4 +102,12 @@ public class Versao implements Serializable, Persistable<Long> {
         return "com.sade.model.Versao[ id=" + id + " ]";
     }
     
+    public void validate() {
+        //verifica se o periodo inicial não é superior ao final
+        if (periodoInicial.compareTo(periodoFinal) > 0){
+            throw new IllegalArgumentException("O período inicial não pode ser"
+                    + "superior ao período final.");
+        }
+    }
+    
 }
