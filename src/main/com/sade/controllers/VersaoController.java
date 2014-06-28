@@ -1,6 +1,6 @@
-package main.com.sade.controllers;
+package com.sade.controllers;
 
-import main.com.sade.model.Versao;
+import com.sade.model.Versao;
 import java.util.List;
 
 /**

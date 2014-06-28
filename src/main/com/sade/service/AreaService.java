@@ -1,8 +1,8 @@
-package main.com.sade.service;
+package com.sade.service;
 
-import main.com.sade.dao.AreaDao;
-import main.com.sade.manager.SimpleEntityManager;
-import main.com.sade.model.Area;
+import com.sade.dao.AreaDao;
+import com.sade.manager.SimpleEntityManager;
+import com.sade.model.Area;
 import java.util.List;
 
 /**
@@ -13,9 +13,10 @@ public class AreaService {
 
     private AreaDao dao;
     private SimpleEntityManager simpleEntityManager;
-
-    public AreaService(SimpleEntityManager simpleEntityManager) {
-        this.simpleEntityManager = simpleEntityManager;
+    
+    public AreaService(){
+        String persistenceUnitName = "SADEPU";
+        this.simpleEntityManager =  new SimpleEntityManager(persistenceUnitName);
         dao = new AreaDao(simpleEntityManager.getEntityManager());
     }
 

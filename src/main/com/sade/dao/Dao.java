@@ -1,6 +1,6 @@
-package main.com.sade.dao;
+package com.sade.dao;
 
-import main.com.sade.model.Persistable;
+import com.sade.model.Persistable;
 
 import java.util.List;
 

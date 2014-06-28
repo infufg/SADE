@@ -1,4 +1,4 @@
-package main.com.sade.manager;
+package com.sade.manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

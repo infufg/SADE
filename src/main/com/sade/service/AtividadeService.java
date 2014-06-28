@@ -1,8 +1,8 @@
-package main.com.sade.service;
+package com.sade.service;
 
-import main.com.sade.dao.AtividadeDao;
-import main.com.sade.manager.SimpleEntityManager;
-import main.com.sade.model.Atividade;
+import com.sade.dao.AtividadeDao;
+import com.sade.manager.SimpleEntityManager;
+import com.sade.model.Atividade;
 import java.util.List;
 
 /**
@@ -14,8 +14,9 @@ public class AtividadeService {
     private AtividadeDao dao;
     private SimpleEntityManager simpleEntityManager;
 
-    public AtividadeService(SimpleEntityManager simpleEntityManager) {
-        this.simpleEntityManager = simpleEntityManager;
+     public AtividadeService(){
+        String persistenceUnitName = "SADEPU";
+        this.simpleEntityManager =  new SimpleEntityManager(persistenceUnitName);
         dao = new AtividadeDao(simpleEntityManager.getEntityManager());
     }
 

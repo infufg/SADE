@@ -1,6 +1,6 @@
-package main.com.sade.controllers;
+package com.sade.controllers;
 
-import main.com.sade.model.Area;
+import com.sade.model.Area;
 import java.util.List;
 
 /**
@@ -9,10 +9,9 @@ import java.util.List;
  */
 public class AreaController {
     
-    AreaService service = new AreaService();
-    
     public Area save(Area area){
-        service.save(area);
+        //TODO esperando service
+        return null;
     }
     
     public Area update(Area area){

@@ -1,6 +1,6 @@
-package main.com.sade.model;
+package com.sade.model;
 
-import main.com.sade.model.Atividade;
+import com.sade.model.Atividade;
 
 import java.util.List;
 

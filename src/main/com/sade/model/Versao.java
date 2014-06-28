@@ -1,4 +1,4 @@
-package main.com.sade.model;
+package com.sade.model;
 
 import java.io.Serializable;
 import java.util.Calendar;

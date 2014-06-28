@@ -1,6 +1,6 @@
-package main.com.sade.dao;
+package com.sade.dao;
 
-import main.com.sade.model.Atividade;
+import com.sade.model.Atividade;
 
 import javax.persistence.EntityManager;
 

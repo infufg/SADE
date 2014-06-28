@@ -1,8 +1,8 @@
-package main.com.sade.service;
+package com.sade.service;
 
-import main.com.sade.dao.VersaoDao;
-import main.com.sade.manager.SimpleEntityManager;
-import main.com.sade.model.Versao;
+import com.sade.dao.VersaoDao;
+import com.sade.manager.SimpleEntityManager;
+import com.sade.model.Versao;
 import java.util.List;
 
 /**
@@ -14,8 +14,9 @@ public class VersaoService {
     private VersaoDao dao;
     private SimpleEntityManager simpleEntityManager;
 
-    public VersaoService(SimpleEntityManager simpleEntityManager) {
-        this.simpleEntityManager = simpleEntityManager;
+     public VersaoService(){
+        String persistenceUnitName = "SADEPU";
+        this.simpleEntityManager =  new SimpleEntityManager(persistenceUnitName);
         dao = new VersaoDao(simpleEntityManager.getEntityManager());
     }
 
