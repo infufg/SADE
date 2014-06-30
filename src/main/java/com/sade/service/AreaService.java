@@ -1,4 +1,4 @@
-package main.com.sade.service;
+package com.sade.service;
 
 import com.sade.dao.AreaDao;
 import com.sade.manager.SimpleEntityManager;

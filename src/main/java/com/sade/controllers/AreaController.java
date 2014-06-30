@@ -1,7 +1,7 @@
 package com.sade.controllers;
 
 import com.sade.model.Area;
-import main.com.sade.service.AreaService;
+import com.sade.service.AreaService;
 import java.util.List;
 
 /**
