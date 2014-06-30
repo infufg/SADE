@@ -1,6 +1,7 @@
 package com.sade.controllers;
 
 import com.sade.model.Area;
+import main.com.sade.service.AreaService;
 import java.util.List;
 
 /**
@@ -9,29 +10,24 @@ import java.util.List;
  */
 public class AreaController {
     
-    public Area save(Area area){
-        //TODO esperando service
-        return null;
+    public Area save(Area area){        
+        return new AreaService().save(area);          
     }
     
     public Area update(Area area){
-        //TODO esperando service
-        return null;
+        return new AreaService().update(area);          
     }
     
-    public boolean delete(Area area){
-        //TODO esperando service
-        return false;
+    public boolean delete(Area area){        
+        return new AreaService().delete(area);
     }
     
-    public List<Area> list(){
-        //TODO esperando service
-        return null;
+    public List<Area> list(){        
+        return new AreaService().list();
     }
     
-    public Area get(Long idArea){
-        //TODO esperando service
-        return null;
+    public Area get(Long idArea){        
+        return new AreaService().get(idArea);
     }
     
     
