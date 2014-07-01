@@ -1,7 +1,6 @@
 package com.sade.service;
 
 import com.sade.dao.AreaDao;
-import com.sade.manager.SimpleEntityManager;
 import com.sade.model.Area;
 
 import java.util.List;
@@ -12,60 +11,25 @@ import java.util.List;
 public class AreaService {
 
 	private AreaDao dao;
-	private SimpleEntityManager simpleEntityManager;
 
 	public AreaService() {
 
-		String persistenceUnitName = "SADEPU";
-		this.simpleEntityManager = new SimpleEntityManager(persistenceUnitName);
-		dao = new AreaDao(simpleEntityManager.getEntityManager());
+		dao = new AreaDao();
 	}
 
 	public Area save(Area area) {
 
-		try {
-			simpleEntityManager.beginTransaction();
-			area.validate();
-			dao.save(area);
-			simpleEntityManager.commit();
-			return area;
-		} catch (Exception e) {
-			e.printStackTrace();
-			simpleEntityManager.rollBack();
-		}
-
-		return null;
+		return dao.save(area);
 	}
 
 	public Area update(Area area) {
 
-		try {
-			simpleEntityManager.beginTransaction();
-			area.validate();
-			dao.update(area);
-			simpleEntityManager.commit();
-			return area;
-		} catch (Exception e) {
-			e.printStackTrace();
-			simpleEntityManager.rollBack();
-		}
-
-		return null;
+		return dao.update(area);
 	}
 
 	public boolean delete(Area area) {
 
-		try {
-			simpleEntityManager.beginTransaction();
-			dao.delete(area);
-			simpleEntityManager.commit();
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			simpleEntityManager.rollBack();
-		}
-
-		return false;
+		return dao.delete(area);
 	}
 
 	public List<Area> list() {

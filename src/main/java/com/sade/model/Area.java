@@ -21,12 +21,12 @@ public class Area implements Serializable, Persistable<Long> {
 	@OneToMany(mappedBy = "area")
 	private List<Atividade> atividades;
 
-	@OneToMany(mappedBy = "area")
+	@OneToMany(mappedBy = "areaPai")
 	private List<Area> areas;
 
 	@ManyToOne()
 	@JoinColumn(name = "id_area_pai", referencedColumnName = "id_area")
-	private Area area;
+	private Area areaPai;
 
 	public List<Atividade> getAtividades() {
 
@@ -78,48 +78,51 @@ public class Area implements Serializable, Persistable<Long> {
 		this.areas = areas;
 	}
 
-	public Area getArea() {
+	public Area getAreaPai() {
 
-		return area;
+		return areaPai;
 	}
 
-	public void setArea(Area area) {
+	public void setAreaPai(Area area) {
 
-		this.area = area;
+		this.areaPai = area;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o) return true;
+		if (!(o instanceof Area)) return false;
+
+		Area area = (Area) o;
+
+		if (areaPai != null ? !areaPai.equals(area.areaPai) : area.areaPai != null) return false;
+		if (areas != null ? !areas.equals(area.areas) : area.areas != null) return false;
+		if (atividades != null ? !atividades.equals(area.atividades) : area.atividades != null) return false;
+		if (id != null ? !id.equals(area.id) : area.id != null) return false;
+		if (!nome.equals(area.nome)) return false;
+
+		return true;
 	}
 
 	@Override
 	public int hashCode() {
 
-		int hash = 0;
-		hash += (id != null ? id.hashCode() : 0);
-		return hash;
-	}
-
-	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Area)) {
-			return false;
-		}
-		Area other = (Area) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-			return false;
-		}
-		return true;
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + nome.hashCode();
+		result = 31 * result + (atividades != null ? atividades.hashCode() : 0);
+		result = 31 * result + (areas != null ? areas.hashCode() : 0);
+		result = 31 * result + (areaPai != null ? areaPai.hashCode() : 0);
+		return result;
 	}
 
 	@Override
 	public String toString() {
 
-		return "com.sade.model.Area[ id=" + id + " ]";
+		final StringBuilder sb = new StringBuilder("Area{");
+		sb.append("id=").append(id);
+		sb.append(", nome='").append(nome).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
-
-	public void validate() {
-
-		if (nome == null) {
-			throw new IllegalArgumentException("Name cannot be null");
-		}
-	}
-
 }
