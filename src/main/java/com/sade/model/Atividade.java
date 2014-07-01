@@ -4,152 +4,178 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * @author Eurismar Pires Borges
+ * @author eurismarpires
  */
 @Entity
 public class Atividade implements Serializable, Persistable<Long> {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_atividade")
-    private Long id;
 
-    @JoinColumn(name = "id_area", referencedColumnName = "id_area")
-    private Area area;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_atividade")
+	private Long id;
 
-    @JoinColumn(name = "id_versao", referencedColumnName = "id_versao")
-    private Versao versao;
+	@ManyToOne
+	@JoinColumn(name = "id_area", referencedColumnName = "id_area")
+	private Area area;
 
-    @Column
-    private String nome;
+	@ManyToOne
+	@JoinColumn(name = "id_versao", referencedColumnName = "id_versao")
+	private Versao versao;
 
-    @Column
-    private String codigo;
+	@Column
+	private String nome;
 
-    @Column(name = "limite_pontuacao")
-    private String descricao;
+	@Column
+	private String codigo;
 
-    @Column
-    private Double pontuacao;
+	@Column(name = "limite_pontuacao")
+	private String descricao;
 
-    @Column
-    private Double limitePontuacao;
+	@Column
+	private Double pontuacao;
 
-    @Column
-    private Integer quantidade;
+	@Column
+	private Double limitePontuacao;
 
-    @Column
-    private Integer divisor;
+	@Column
+	private Integer quantidade;
 
-    public Long getId() {
-        return id;
-    }
+	@Column
+	private Integer divisor;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
 
-    public Area getArea() {
-        return area;
-    }
+		return id;
+	}
 
-    public void setArea(Area area) {
-        this.area = area;
-    }
+	public void setId(Long id) {
 
-    public Versao getVersao() {
-        return versao;
-    }
+		this.id = id;
+	}
 
-    public void setVersao(Versao versao) {
-        this.versao = versao;
-    }
+	public Area getArea() {
 
-    public String getNome() {
-        return nome;
-    }
+		return area;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setArea(Area area) {
 
-    public String getCodigo() {
-        return codigo;
-    }
+		this.area = area;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public Versao getVersao() {
 
-    public String getDescricao() {
-        return descricao;
-    }
+		return versao;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public void setVersao(Versao versao) {
 
-    public Double getLimitePontuacao() {
-        return limitePontuacao;
-    }
+		this.versao = versao;
+	}
 
-    public void setLimitePontuacao(Double limitePontuacao) {
-        this.limitePontuacao = limitePontuacao;
-    }
+	public String getNome() {
 
-    public Double getPontuacao() {
-        return pontuacao;
-    }
+		return nome;
+	}
 
-    public void setPontuacao(Double pontuacao) {
-        this.pontuacao = pontuacao;
-    }
+	public void setNome(String nome) {
 
-    public Integer getQuantidade() {
-        return quantidade;
-    }
+		this.nome = nome;
+	}
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+	public String getCodigo() {
 
-    public Integer getDivisor() {
-        return divisor;
-    }
+		return codigo;
+	}
 
-    public void setDivisor(Integer divisor) {
-        this.divisor = divisor;
-    }
+	public void setCodigo(String codigo) {
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
+		this.codigo = codigo;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Atividade)) {
-            return false;
-        }
-        Atividade other = (Atividade) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
+	public String getDescricao() {
 
-    @Override
-    public String toString() {
-        return "com.sade.model.Atividade[ id=" + id + " ]";
-    }
-    
-    public void validate() {
-        if (nome == null) {
-            throw new IllegalArgumentException("Name cannot be null");
-        }
-    }
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+
+		this.descricao = descricao;
+	}
+
+	public Double getLimitePontuacao() {
+
+		return limitePontuacao;
+	}
+
+	public void setLimitePontuacao(Double limitePontuacao) {
+
+		this.limitePontuacao = limitePontuacao;
+	}
+
+	public Double getPontuacao() {
+
+		return pontuacao;
+	}
+
+	public void setPontuacao(Double pontuacao) {
+
+		this.pontuacao = pontuacao;
+	}
+
+	public Integer getQuantidade() {
+
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+
+		this.quantidade = quantidade;
+	}
+
+	public Integer getDivisor() {
+
+		return divisor;
+	}
+
+	public void setDivisor(Integer divisor) {
+
+		this.divisor = divisor;
+	}
+
+	@Override
+	public int hashCode() {
+
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are not set
+		if (!(object instanceof Atividade)) {
+			return false;
+		}
+		Atividade other = (Atividade) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+
+		return "com.sade.model.Atividade[ id=" + id + " ]";
+	}
+
+	public void validate() {
+
+		if (nome == null) {
+			throw new IllegalArgumentException("Name cannot be null");
+		}
+	}
 
 }

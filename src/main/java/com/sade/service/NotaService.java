@@ -6,31 +6,35 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class NotaService {
-    public BigDecimal calculaNotaDeAtividade(Atividade atividade) {
-        BigDecimal pontuacao = new BigDecimal(atividade.getPontuacao());
-        BigDecimal quantidade = new BigDecimal(atividade.getQuantidade());
-        BigDecimal divisor = new BigDecimal(atividade.getDivisor());
 
-        BigDecimal limitePontuacao = new BigDecimal(atividade.getLimitePontuacao());
+	public BigDecimal calculaNotaDeAtividade(Atividade atividade) {
 
-        BigDecimal nota = (pontuacao.multiply(quantidade)).divide(divisor);
-        if (primeiroEhMaiorQueSegundo(nota, limitePontuacao)) {
-            nota = limitePontuacao;
-        }
+		BigDecimal pontuacao = new BigDecimal(atividade.getPontuacao());
+		BigDecimal quantidade = new BigDecimal(atividade.getQuantidade());
+		BigDecimal divisor = new BigDecimal(atividade.getDivisor());
 
-        return nota;
-    }
+		BigDecimal limitePontuacao = new BigDecimal(atividade.getLimitePontuacao());
 
-    public BigDecimal calculeNota(List<Atividade> atividades) {
-        BigDecimal notaTotal = BigDecimal.ZERO;
+		BigDecimal nota = (pontuacao.multiply(quantidade)).divide(divisor);
+		if (primeiroEhMaiorQueSegundo(nota, limitePontuacao)) {
+			nota = limitePontuacao;
+		}
 
-        for(Atividade atividade : atividades)
-            notaTotal = notaTotal.add(calculaNotaDeAtividade(atividade));
+		return nota;
+	}
 
-        return notaTotal;
-    }
+	public BigDecimal calculeNota(List<Atividade> atividades) {
 
-    private boolean primeiroEhMaiorQueSegundo(BigDecimal a, BigDecimal b) {
-        return a.compareTo(b) == 1;
-    }
+		BigDecimal notaTotal = BigDecimal.ZERO;
+
+		for (Atividade atividade : atividades)
+			notaTotal = notaTotal.add(calculaNotaDeAtividade(atividade));
+
+		return notaTotal;
+	}
+
+	private boolean primeiroEhMaiorQueSegundo(BigDecimal a, BigDecimal b) {
+
+		return a.compareTo(b) == 1;
+	}
 }
