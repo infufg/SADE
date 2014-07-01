@@ -1,40 +1,44 @@
 package com.sade.model;
 
-import com.sade.model.Atividade;
-
 import java.util.List;
 
 /**
- * Created by Vinicius on 25/06/2014.
+ * Created by viniciusmaboni
  * Não persistido. Utilizado para encapsular as lista de atividade de um dado docente.
  */
 public class Docente {
 
-    private String id;
-    private String nome;
-    private List<Atividade> atividades;
+	private String id;
+	private String nome;
+	private List<Atividade> atividades;
 
-    public String getId() {
-        return id;
-    }
+	public String getId() {
 
-    public void setId(String id) {
-        this.id = id;
-    }
+		return id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setId(String id) {
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+		this.id = id;
+	}
 
-    public List<Atividade> getAtividades() {
-        return atividades;
-    }
+	public String getNome() {
 
-    public void setAtividades(List<Atividade> atividades) {
-        this.atividades = this.atividades;
-    }
+		return nome;
+	}
+
+	public void setNome(String nome) {
+
+		this.nome = nome;
+	}
+
+	public List<Atividade> getAtividades() {
+
+		return atividades;
+	}
+
+	public void setAtividades(List<Atividade> atividades) {
+
+		this.atividades = this.atividades;
+	}
 }

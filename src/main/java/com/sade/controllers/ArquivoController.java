@@ -3,12 +3,11 @@ package com.sade.controllers;
 import java.io.File;
 
 /**
- *
- * @author Julliano
+ * @author jullianonascimento
  */
 public class ArquivoController {
-    
-    public void importarXML(File file){
-        
-    }
+
+	public void importarXML(File file) {
+
+	}
 }

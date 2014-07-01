@@ -3,72 +3,79 @@ package com.sade.service;
 import com.sade.dao.AtividadeDao;
 import com.sade.manager.SimpleEntityManager;
 import com.sade.model.Atividade;
+
 import java.util.List;
 
 /**
- *
- * @author Julliano
+ * @author jullianonascimento
  */
 public class AtividadeService {
-    
-    private AtividadeDao dao;
-    private SimpleEntityManager simpleEntityManager;
 
-     public AtividadeService(){
-        String persistenceUnitName = "SADEPU";
-        this.simpleEntityManager =  new SimpleEntityManager(persistenceUnitName);
-        dao = new AtividadeDao(simpleEntityManager.getEntityManager());
-    }
+	private AtividadeDao dao;
+	private SimpleEntityManager simpleEntityManager;
 
-    public Atividade save(Atividade atividade) {
-        try {
-            simpleEntityManager.beginTransaction();
-            atividade.validate();
-            dao.save(atividade);
-            simpleEntityManager.commit();
-            return atividade;
-        } catch (Exception e) {
-            e.printStackTrace();
-            simpleEntityManager.rollBack();
-        }
+	public AtividadeService() {
 
-        return null;
-    }
+		String persistenceUnitName = "SADEPU";
+		this.simpleEntityManager = new SimpleEntityManager(persistenceUnitName);
+		dao = new AtividadeDao(simpleEntityManager.getEntityManager());
+	}
 
-    public Atividade update(Atividade atividade) {
-        try {
-            simpleEntityManager.beginTransaction();
-            atividade.validate();
-            dao.update(atividade);
-            simpleEntityManager.commit();
-            return atividade;
-        } catch (Exception e) {
-            e.printStackTrace();
-            simpleEntityManager.rollBack();
-        }
+	public Atividade save(Atividade atividade) {
 
-        return null;
-    }
+		try {
+			simpleEntityManager.beginTransaction();
+			atividade.validate();
+			dao.save(atividade);
+			simpleEntityManager.commit();
+			return atividade;
+		} catch (Exception e) {
+			e.printStackTrace();
+			simpleEntityManager.rollBack();
+		}
 
-    public boolean delete(Atividade atividade) {
-        try {
-            simpleEntityManager.beginTransaction();
-            dao.delete(atividade);
-            simpleEntityManager.commit();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            simpleEntityManager.rollBack();
-        }
+		return null;
+	}
 
-        return false;
-    }
+	public Atividade update(Atividade atividade) {
 
-    public List<Atividade> list() {
-        return dao.list();
-    }
-    public Atividade get(Long idAtividade){        
-        return dao.get(idAtividade);
-    }    
+		try {
+			simpleEntityManager.beginTransaction();
+			atividade.validate();
+			dao.update(atividade);
+			simpleEntityManager.commit();
+			return atividade;
+		} catch (Exception e) {
+			e.printStackTrace();
+			simpleEntityManager.rollBack();
+		}
+
+		return null;
+	}
+
+	public boolean delete(Atividade atividade) {
+
+		try {
+			simpleEntityManager.beginTransaction();
+			dao.delete(atividade);
+			simpleEntityManager.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			simpleEntityManager.rollBack();
+		}
+
+		return false;
+	}
+
+	public List<Atividade> list() {
+
+		return dao.list();
+	}
+
+	public Atividade get(Long idAtividade) {
+
+		return dao.get(idAtividade);
+	}
 }
 
