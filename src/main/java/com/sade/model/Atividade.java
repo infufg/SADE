@@ -145,37 +145,57 @@ public class Atividade implements Serializable, Persistable<Long> {
 	}
 
 	@Override
-	public int hashCode() {
+	public boolean equals(Object o) {
 
-		int hash = 0;
-		hash += (id != null ? id.hashCode() : 0);
-		return hash;
+		if (this == o) return true;
+		if (!(o instanceof Atividade)) return false;
+
+		Atividade atividade = (Atividade) o;
+
+		if (!area.equals(atividade.area)) return false;
+		if (!codigo.equals(atividade.codigo)) return false;
+		if (!descricao.equals(atividade.descricao)) return false;
+		if (divisor != null ? !divisor.equals(atividade.divisor) : atividade.divisor != null) return false;
+		if (limitePontuacao != null ? !limitePontuacao.equals(atividade.limitePontuacao) : atividade.limitePontuacao != null)
+			return false;
+		if (!nome.equals(atividade.nome)) return false;
+		if (!pontuacao.equals(atividade.pontuacao)) return false;
+		if (!quantidade.equals(atividade.quantidade)) return false;
+		if (!versao.equals(atividade.versao)) return false;
+
+		return true;
 	}
 
 	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Atividade)) {
-			return false;
-		}
-		Atividade other = (Atividade) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-			return false;
-		}
-		return true;
+	public int hashCode() {
+
+		int result = area.hashCode();
+		result = 31 * result + versao.hashCode();
+		result = 31 * result + nome.hashCode();
+		result = 31 * result + codigo.hashCode();
+		result = 31 * result + descricao.hashCode();
+		result = 31 * result + pontuacao.hashCode();
+		result = 31 * result + (limitePontuacao != null ? limitePontuacao.hashCode() : 0);
+		result = 31 * result + quantidade.hashCode();
+		result = 31 * result + (divisor != null ? divisor.hashCode() : 0);
+		return result;
 	}
 
 	@Override
 	public String toString() {
 
-		return "com.sade.model.Atividade[ id=" + id + " ]";
+		final StringBuilder sb = new StringBuilder("Atividade{");
+		sb.append("id=").append(id);
+		sb.append(", area=").append(area);
+		sb.append(", versao=").append(versao);
+		sb.append(", nome='").append(nome).append('\'');
+		sb.append(", codigo='").append(codigo).append('\'');
+		sb.append(", descricao='").append(descricao).append('\'');
+		sb.append(", pontuacao=").append(pontuacao);
+		sb.append(", limitePontuacao=").append(limitePontuacao);
+		sb.append(", quantidade=").append(quantidade);
+		sb.append(", divisor=").append(divisor);
+		sb.append('}');
+		return sb.toString();
 	}
-
-	public void validate() {
-
-		if (nome == null) {
-			throw new IllegalArgumentException("Name cannot be null");
-		}
-	}
-
 }
