@@ -1,7 +1,6 @@
 package com.sade.service;
 
 import com.sade.dao.AtividadeDao;
-import com.sade.manager.SimpleEntityManager;
 import com.sade.model.Atividade;
 
 import java.util.List;
@@ -12,60 +11,27 @@ import java.util.List;
 public class AtividadeService {
 
 	private AtividadeDao dao;
-	private SimpleEntityManager simpleEntityManager;
 
 	public AtividadeService() {
 
-		String persistenceUnitName = "SADEPU";
-		this.simpleEntityManager = new SimpleEntityManager(persistenceUnitName);
-		dao = new AtividadeDao(simpleEntityManager.getEntityManager());
+		dao = new AtividadeDao();
 	}
 
 	public Atividade save(Atividade atividade) {
 
-		try {
-			simpleEntityManager.beginTransaction();
-			atividade.validate();
-			dao.save(atividade);
-			simpleEntityManager.commit();
-			return atividade;
-		} catch (Exception e) {
-			e.printStackTrace();
-			simpleEntityManager.rollBack();
-		}
+		return dao.save(atividade);
 
-		return null;
 	}
 
 	public Atividade update(Atividade atividade) {
 
-		try {
-			simpleEntityManager.beginTransaction();
-			atividade.validate();
-			dao.update(atividade);
-			simpleEntityManager.commit();
-			return atividade;
-		} catch (Exception e) {
-			e.printStackTrace();
-			simpleEntityManager.rollBack();
-		}
-
-		return null;
+		return dao.update(atividade);
 	}
 
 	public boolean delete(Atividade atividade) {
 
-		try {
-			simpleEntityManager.beginTransaction();
-			dao.delete(atividade);
-			simpleEntityManager.commit();
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			simpleEntityManager.rollBack();
-		}
+		return dao.delete(atividade);
 
-		return false;
 	}
 
 	public List<Atividade> list() {

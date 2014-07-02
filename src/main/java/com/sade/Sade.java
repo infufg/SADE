@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sade;
 
 import com.sade.model.Area;
@@ -27,9 +21,9 @@ public class Sade {
         int nextInt = sc.nextInt();
         
         String msgCrud = "Informe\n1 - Para salvar\n"
-                + "2 - Para Atualizar\n"
-                + "3 - Para Deletar\n"
-                + "4 - Para Listar\n"              
+                + "2 - Para Listar\n"              
+                + "3 - Para Atualizar\n"
+                + "4 - Para Deletar\n"                
                 + "5 - Para obter uma área\n";
         int opcao = 0;
         switch(nextInt){
@@ -42,6 +36,7 @@ public class Sade {
                         break;
                     }
                     case 2:{
+                        testarListarAreaService();
                         break;
                     }
                     case 3:{
@@ -83,5 +78,13 @@ public class Sade {
                 inserirMais = false;
             }                                
         } while (inserirMais);                        
+    }
+    public static void testarListarAreaService(){
+         AreaService areaService = new AreaService();
+         List<Area> areas = new ArrayList<Area>();
+         areas = areaService.list();
+         for (Area area1 : areas) {
+            System.out.println(area1.getId() + " - " + area1.getNome());
+        }          
     }
 }
