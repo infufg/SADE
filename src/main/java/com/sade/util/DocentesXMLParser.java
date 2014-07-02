@@ -22,13 +22,12 @@ public class DocentesXMLParser extends Thread {
 	private final String CODIGO = "codigo";
 
 	private Node nodeDocente;
-	Docente docenteResultante;
 	private DocenteXMLParserDelegate delegate;
 
-	public DocentesXMLParser(Node nodeDocente, Docente docente, DocenteXMLParserDelegate delegate) {
+	public DocentesXMLParser(Node nodeDocente,DocenteXMLParserDelegate delegate) {
 
 		this.nodeDocente = nodeDocente;
-		this.docenteResultante = docente;
+
 		this.delegate = delegate;
 
 	}

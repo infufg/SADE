@@ -44,9 +44,8 @@ public class XMLParser implements DocenteXMLParserDelegate {
      * @return java.util.List<Docente> contendo todos os docentes encontrados.
      * @throws java.io.FileNotFoundException
      */
-    public List<Docente> getDocentesXML(File file) throws FileNotFoundException {
+    public ConcurrentSkipListSet<Docente> getDocentesXML(File file) throws FileNotFoundException {
 
-        List<Docente> docentesEncontrados = new ArrayList<Docente>();
         FileInputStream inputStream = new FileInputStream(file);
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -69,8 +68,8 @@ public class XMLParser implements DocenteXMLParserDelegate {
 
                     if (currentElement.getNodeName().equals(DOCENTE)) {
 
-                        //docentesEncontrados.add(nodeParaDocente(currentElement));
-                        //cria uma nova thread e parte para o proximo elemento.
+
+                        Thread t = new DocentesXMLParser(currentElement,this);
                     }
                 }
 
@@ -91,7 +90,7 @@ public class XMLParser implements DocenteXMLParserDelegate {
         }
 
 
-        return docentesEncontrados;
+        return docentes;
     }
 
     /**
@@ -100,7 +99,7 @@ public class XMLParser implements DocenteXMLParserDelegate {
      * @return List<Docente> contendo todos os docentes encontrados.
      * @throws java.io.FileNotFoundException
      */
-    public List<Docente> getDocentesXML(String filePath) throws FileNotFoundException {
+    public ConcurrentSkipListSet<Docente> getDocentesXML(String filePath) throws FileNotFoundException {
 
         File file = new File(filePath);
 
