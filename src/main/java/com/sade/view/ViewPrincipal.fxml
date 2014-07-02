@@ -5,12 +5,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="48.0" layoutY="16.0" prefHeight="600.0" prefWidth="920.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <Pane layoutX="48.0" layoutY="16.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@style.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
-            <Text layoutX="281.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema de Avaliação">
+            <Text fill="#0e53ae" layoutX="287.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema de Avaliação">
                <font>
                   <Font size="36.0" />
                </font>
@@ -28,10 +27,15 @@
                   <TextField layoutX="19.0" layoutY="73.0" prefHeight="25.0" prefWidth="192.0" />
                </children>
             </GridPane>
-            <Text layoutX="303.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erros" />
-            <Button layoutX="19.0" layoutY="113.0" mnemonicParsing="false" text="Começar Avaliação" />
-            <ListView layoutX="12.0" layoutY="153.0" prefHeight="438.0" prefWidth="894.0" />
+            <Text fill="RED" layoutX="294.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erros" wrappingWidth="608.537109375" />
+            <Button layoutX="19.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" text="Começar Avaliação" />
+			
+            <ListView id="list" layoutX="19.0" layoutY="148.0" prefHeight="438.0" prefWidth="884.0" styleClass="mylistview" />
+			
          </children>
+         <styleClass>
+            <String fx:value="mylistview" />
+         </styleClass>
       </Pane>
    </children>
 </AnchorPane>
