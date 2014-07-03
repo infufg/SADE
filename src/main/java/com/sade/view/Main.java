@@ -1,7 +1,9 @@
 package com.sade.view;
 
 import com.sade.model.Area;
+import com.sade.model.Atividade;
 import com.sade.service.AreaService;
+import com.sade.service.AtividadeService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +25,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe\n1 - Para testar a AreaService\n"
                 + "2 - Para testar a AtividadeService\n"
-                + "3 - Para testar a VersaoService\n"
-                + "4 - Para testar a NotaService");
+                + "3 - Para testar a VersaoService\n");
+
         int nextInt = sc.nextInt();
 
         String msgCrud = "Informe\n1 - Para salvar\n"
@@ -58,21 +60,22 @@ public class Main {
             }
             case 2: {
                 System.out.println(msgCrud);
+                opcao = sc.nextInt();
                 switch (opcao) {
                     case 1: {
-                        //testarInsertAtividadeService();
+                        testarInsertAtividadeService();
                         break;
                     }
                     case 2: {
-                        //testarListarAtividadeService();
+                        testarListarAtividadeService();
                         break;
                     }
                     case 3: {
-                        //testarAtualizarAtividadeService();
+                        testarAtualizarAtividadeService();
                         break;
                     }
                     case 4: {
-                        //testarDeletarAtividadeService();
+                        testarDeletarAtividadeService();
                         break;
                     }
                 }
@@ -81,12 +84,10 @@ public class Main {
             }
             case 3: {
                 System.out.println(msgCrud);
+                opcao = sc.nextInt();
                 break;
             }
-            case 4: {
-                System.out.println(msgCrud);
-                break;
-            }
+
         }
     }
 
@@ -208,4 +209,137 @@ public class Main {
             }
         }
     }
+
+    //Inserir Atividade
+    public static void testarInsertAtividadeService() throws IOException {
+
+        boolean inserirMais = true;
+
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(inputStreamReader);
+
+        while (inserirMais) {
+
+            AtividadeService atividadeService = new AtividadeService();
+            Atividade atividade = new Atividade();
+
+            //Nome
+            System.out.println("Escreva o nome da atividade");
+            String nomeAtividade = reader.readLine();
+            System.out.println("Escreva a pontuacao da atividade");
+            double pontuacaoAtividade = Double.parseDouble(reader.readLine());
+            atividade.setNome(nomeAtividade);
+            atividade.setPontuacao(pontuacaoAtividade);
+            atividadeService.save(atividade);
+
+            System.out.println("Se Deseja inserir outra atividade digite 1 ou digite outra tecla para sair");
+            int opcao = Integer.parseInt(reader.readLine());
+
+            if (opcao != 1) {
+                inserirMais = false;
+            }
+
+        }
+
+    }
+
+    //Listar atividade
+    public static void testarListarAtividadeService() {
+
+        AtividadeService atividadeService = new AtividadeService();
+        List<Atividade> atividades;
+        atividades = atividadeService.list();
+        for (Atividade atividade1 : atividades) {
+            System.out.println(atividade1.getId() + " - " + atividade1.getNome() + " - " + atividade1.getPontuacao());
+        }
+
+    }
+
+    //Atualizar atividade
+    public static void testarAtualizarAtividadeService() throws IOException {
+
+        boolean atualizarMais = true;
+
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(inputStreamReader);
+
+        while (atualizarMais){
+            boolean existeAtividade = false;
+            AtividadeService atividadeService = new AtividadeService();
+            System.out.println("Digite o nome da atividade para atualizar");
+            String nomeAtividade = reader.readLine();
+            List<Atividade> atividades;
+            atividades = atividadeService.list();
+
+            for (Atividade a : atividades) {
+
+                if (a.getNome() != null && a.getNome().equals(nomeAtividade)) {
+
+                    existeAtividade = true;
+                    System.out.println("Digite o novo nome da atividade");
+                    String novoNome = reader.readLine();
+
+                    a.setNome(novoNome);
+
+                    atividadeService.update(a);
+                    System.out.println("Atividade " + novoNome + " atualizada");
+                    break;
+
+                }
+
+            }
+
+            if (existeAtividade == false) {
+                System.out.println("Atividade " + nomeAtividade + " inexistente!");
+            }
+
+            System.out.println("Se Deseja atualizar outra atividade digite 1 ou digite outra tecla para sair");
+            int opcao = Integer.parseInt(reader.readLine());
+            if (opcao != 1) {
+                atualizarMais = false;
+            }
+        }
+    }
+
+    //Deletar atividade
+    public static void testarDeletarAtividadeService() throws IOException {
+        boolean deletarMais = true;
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(inputStreamReader);
+
+        while (deletarMais) {
+
+            boolean existeAtividade = false;
+            AtividadeService atividadeService = new AtividadeService();
+
+            System.out.println("Digite o nome da atividade");
+            String nomeAtividade = reader.readLine();
+            List<Atividade> atividades;
+            atividades = atividadeService.list();
+
+            for (Atividade a : atividades) {
+
+                if (a.getNome() != null && a.getNome().equals(nomeAtividade)) {
+
+                    existeAtividade = true;
+                    atividadeService.delete(a);
+                    System.out.println("Atividade " + nomeAtividade + " deletada");
+                    break;
+                }
+
+            }
+
+            if (existeAtividade == false) {
+                System.out.println("Atividade " + nomeAtividade + " inexistente!");
+            }
+
+            System.out.println("Se Deseja deletar outra Atividade digite 1 ou digite outra tecla para sair");
+            int opcao = Integer.parseInt(reader.readLine());
+            if (opcao != 1) {
+                deletarMais = false;
+            }
+        }
+    }
+
 }
+
