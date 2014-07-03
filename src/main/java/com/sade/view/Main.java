@@ -1,8 +1,14 @@
 package com.sade.view;
 
 import com.sade.model.Area;
+import com.sade.model.Atividade;
 import com.sade.service.AreaService;
+import com.sade.service.AtividadeService;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
@@ -85,4 +91,73 @@ public class Main {
 			System.out.println(area1.getId() + " - " + area1.getNome());
 		}
 	}
+
+    //Atualizar area
+    public static void testarAtualizarAreaService() {
+
+        boolean atualizarMais = true;
+        Scanner sc = new Scanner(System.in);
+
+        do {
+            boolean existeArea = false;
+            AreaService areaService = new AreaService();
+            Area area = new Area();
+            System.out.println("Digite o nome da Area para atualizar");
+            String nomeArea = sc.nextLine();
+            List<Area> areas;
+            areas = areaService.list();
+
+            for (Area area1 : areas) {
+                if (area1.equals(nomeArea)) {
+                    System.out.println(area1.getId() + " - " + area1.getNome());
+                    existeArea = true;
+                    areaService.update(area1);
+                    System.out.println("Area " + nomeArea + " atualizada");
+                }
+            }
+
+            if (existeArea == false) {
+                System.out.println("Area " + nomeArea + " inexistente!");
+            }
+
+            areaService.save(area);
+            System.out.println("Se Deseja atualizar outra Area digite 1 ou digite outra tecla para sair");
+            int opcao = sc.nextInt();
+            if (opcao != 1) {
+                atualizarMais = false;
+            }
+
+        } while (atualizarMais);
+    }
+
+    public static void testarInsertAtividadeService() throws IOException {
+
+        AtividadeService atividadeService = new AtividadeService();
+        Atividade atividade = null;
+
+        boolean inserirMais = true;
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+
+        do {
+
+            atividade = new Atividade();
+
+            System.out.println("Digite o nome da atividade");
+            String nomeAtivadade = bufferedReader.readLine();
+
+            atividade.setNome(nomeAtivadade);
+
+            atividadeService.save(atividade);
+
+            System.out.println("Se Deseja inserir outra ativadade digite 1 ou digite outra tecla para sair");
+
+
+        } while (inserirMais);
+
+
+
+
+    }
 }
