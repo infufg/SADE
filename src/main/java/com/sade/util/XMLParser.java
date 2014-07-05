@@ -1,8 +1,9 @@
 package com.sade.util;
 
-import com.sade.model.Atividade;
 import com.sade.model.Docente;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,10 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Vector;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
@@ -28,7 +26,10 @@ public class XMLParser implements DocenteXMLParserDelegate {
     private final String DOCUMENT0 = "doc";
     private final String DOCENTE = "docente";
 
-    ConcurrentSkipListSet<Docente> docentes;
+    private ConcurrentSkipListSet<Docente> docentes;
+    private boolean encerrado; // para determinar o termino da leitura.
+
+    public boolean isEncerrado() { return encerrado; }
 
     public ConcurrentSkipListSet<Docente> getDocentes() {
         return docentes;
@@ -58,18 +59,20 @@ public class XMLParser implements DocenteXMLParserDelegate {
             Document document = builder.parse(inputStream);
             document.normalize();
 
-            NodeList elements = encontraPrimeiroElementoPorNome(document.getDocumentElement(), DOCUMENT0).getChildNodes();
+            NodeList elements = document.getDocumentElement().getChildNodes();
 
             if (elements != null) {
 
+                encerrado = false;
+
                 for (int i = 0; i < elements.getLength(); i++) {
 
-                    Element currentElement = (Element) elements.item(i);
+                    Node currentElement = elements.item(i);
 
                     if (currentElement.getNodeName().equals(DOCENTE)) {
+                       //delega a execução para uma outra thread e seque o loop
+                       new DocentesXMLParser(currentElement,this).start();
 
-
-                        Thread t = new DocentesXMLParser(currentElement,this);
                     }
                 }
 
@@ -89,6 +92,8 @@ public class XMLParser implements DocenteXMLParserDelegate {
 
         }
 
+
+        encerrado = true;
 
         return docentes;
     }
@@ -112,7 +117,7 @@ public class XMLParser implements DocenteXMLParserDelegate {
     }
 
 
-    public Element encontraPrimeiroElementoPorNome(Node element, String name) throws NoSuchElementException {
+    public Node encontraPrimeiroElementoPorNome(Node element, String name) throws NoSuchElementException {
 
         NodeList elements = element.getChildNodes();
 
@@ -120,7 +125,7 @@ public class XMLParser implements DocenteXMLParserDelegate {
 
             for (int i = 0; i < elements.getLength(); i++) {
 
-                Element currentElement = (Element) elements.item(i);
+               Node currentElement =  elements.item(i);
 
                 if (currentElement.getNodeName().equals(name)) {
                     //retorna a primeira ocorrencia do nó procurado
