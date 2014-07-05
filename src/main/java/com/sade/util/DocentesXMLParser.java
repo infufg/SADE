@@ -2,7 +2,6 @@ package com.sade.util;
 
 import com.sade.model.Atividade;
 import com.sade.model.Docente;
-import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -16,87 +15,85 @@ import java.util.List;
  */
 public class DocentesXMLParser extends Thread {
 
-	private final String ATIVIDADE = "atividade";
-	private final String NOME = "nome";
-	private final String QUANTIDADE = "quantidade";
-	private final String CODIGO = "codigo";
+    private final String ATIVIDADE = "atividade";
+    private final String NOME = "nome";
+    private final String QUANTIDADE = "quantidade";
+    private final String CODIGO = "codigo";
 
-	private Node nodeDocente;
-	private DocenteXMLParserDelegate delegate;
+    private Node nodeDocente;
+    private DocenteXMLParserDelegate delegate;
 
-	public DocentesXMLParser(Node nodeDocente,DocenteXMLParserDelegate delegate) {
+    public DocentesXMLParser(Node nodeDocente, DocenteXMLParserDelegate delegate) {
 
-		this.nodeDocente = nodeDocente;
+        this.nodeDocente = nodeDocente;
 
-		this.delegate = delegate;
+        this.delegate = delegate;
 
-	}
+    }
 
-	@Override
-	public void run() {
+    @Override
+    public void run() {
 
-		nodeParaDocente(nodeDocente);
+        nodeParaDocente(nodeDocente);
 
-	}
+    }
 
-	/**
-	 * Lê um nó xml e converte para um objeto com.sade.model.Docente
-	 *
-	 * @param node só de um docente.
-	 *
-	 * @return com.sade.model.Docente
-	 */
-	public void nodeParaDocente(Node node) {
+    /**
+     * Lê um nó xml e converte para um objeto com.sade.model.Docente
+     *
+     * @param node só de um docente.
+     * @return com.sade.model.Docente
+     */
+    public void nodeParaDocente(Node node) {
 
-		Docente docente = new Docente();
-		List<Atividade> atividades = new ArrayList<Atividade>();
+        Docente docente = new Docente();
+        List<Atividade> atividades = new ArrayList<Atividade>();
 
-		NamedNodeMap map = node.getAttributes();
-		docente.setId(map.getNamedItem(CODIGO).getTextContent());
-		docente.setNome(map.getNamedItem(NOME).getTextContent());
+        NamedNodeMap map = node.getAttributes();
+        docente.setId(map.getNamedItem(CODIGO).getTextContent());
+        docente.setNome(map.getNamedItem(NOME).getTextContent());
 
-		NodeList nodeList = node.getChildNodes();
+        NodeList nodeList = node.getChildNodes();
 
-		for (int i = 0; i < nodeList.getLength(); i++) {
+        for (int i = 0; i < nodeList.getLength(); i++) {
 
-			Element currentElement = (Element) nodeList.item(i);
+            Node currentElement = nodeList.item(i);
 
-			if (currentElement.getNodeName().equals(ATIVIDADE)) {
+            if (currentElement != null && currentElement.getNodeName().equals(ATIVIDADE)) {
 
-				if (currentElement.getNodeName().equals(ATIVIDADE)) {
+                if (currentElement.getNodeName().equals(ATIVIDADE)) {
 
-					atividades.add(nodeParaAtividade(currentElement));
-				}
+                    atividades.add(nodeParaAtividade(currentElement));
+                }
 
-			}
+            }
 
-		}
+        }
 
-		docente.setAtividades(atividades);
-		delegate.parsedDocente(docente);
+        docente.setAtividades(atividades);
+        delegate.parsedDocente(docente);
 
-	}
+    }
 
-	/**
-	 * Converte um nó em um com.sade.model.Atividade
-	 *
-	 * @param node nó que representa a atividade
-	 *
-	 * @return com.sade.model.Atividade
-	 */
-	public Atividade nodeParaAtividade(Node node) {
+    /**
+     * Converte um nó em um com.sade.model.Atividade
+     *
+     * @param node nó que representa a atividade
+     * @return com.sade.model.Atividade
+     */
+    public Atividade nodeParaAtividade(Node node) {
 
-		Atividade atividade = new Atividade();
+        Atividade atividade = new Atividade();
 
-		NamedNodeMap map = node.getAttributes();
+        NamedNodeMap map = node.getAttributes();
 
-		//pega os atributos da tag e usa como valores pra atividade
-		atividade.setCodigo(map.getNamedItem(CODIGO).getTextContent());
-		int quantidade = Integer.parseInt(map.getNamedItem(QUANTIDADE).getTextContent());
-		atividade.setQuantidade(quantidade);
+        //pega os atributos da tag e usa como valores pra atividade
+        atividade.setCodigo(map.getNamedItem(CODIGO).getTextContent());
+        int quantidade = Integer.parseInt(map.getNamedItem(QUANTIDADE).getTextContent());
+        atividade.setQuantidade(quantidade);
 
-		return atividade;
-	}
+        return atividade;
+    }
 
 }
 

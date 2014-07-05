@@ -1,11 +1,12 @@
-package com.sade.controllers;
+package com.sade.view.fx;
 
-import com.sade.dao.Docente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
@@ -24,9 +25,16 @@ public class ViewPrincipalController {
     @FXML
     private ProgressBar progressBar; //será atulizada a partir da quantidade de professores avaliados.
     @FXML
-    private ListView<Docente> listView;
+    private TableView tableView;
+    @FXML
+    private TableColumn columnId;
+    @FXML
+    private TableColumn columnNome;
+    @FXML
+    private TableColumn columnNota;
     @FXML
     private TextField textFieldPathArquivo;
+
 
     //variaveis internas
     private File arquivoSade;
@@ -39,7 +47,11 @@ public class ViewPrincipalController {
     @FXML
     private void initialize() {
 
+        //oculta o botão de erros.
         textErros.setVisible(false);
+
+        //configura as coluna do tableView
+        configuraTableView();
 
     }
 
@@ -68,8 +80,23 @@ public class ViewPrincipalController {
     @FXML
     private void handleButtonIniciarAction(ActionEvent event)
     {
+        if(arquivoSade != null)
+        {
+            TableViewUpdater tableViewUpdater = new TableViewUpdater(tableView,arquivoSade);
+            tableViewUpdater.start();
+        }
+    }
 
+    /**
+     * Configura os valores para os campos da tableview
+     */
+    private void configuraTableView()
+    {
+        columnId.setCellValueFactory(new PropertyValueFactory<ObservableDocente,String>("id"));
 
+        columnNome.setCellValueFactory(new PropertyValueFactory<ObservableDocente,String>("nome"));
+
+        columnNota.setCellValueFactory(new PropertyValueFactory<ObservableDocente,String>("nota"));
 
     }
 
