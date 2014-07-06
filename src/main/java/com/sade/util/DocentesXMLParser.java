@@ -59,7 +59,7 @@ public class DocentesXMLParser extends Thread {
 
             Node currentElement = nodeList.item(i);
 
-            if (currentElement != null && currentElement.getNodeName().equals(ATIVIDADE)) {
+            if (currentElement != null) {
 
                 if (currentElement.getNodeName().equals(ATIVIDADE)) {
 
