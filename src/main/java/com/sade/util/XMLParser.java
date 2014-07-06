@@ -92,7 +92,6 @@ public class XMLParser implements DocenteXMLParserDelegate {
 
         }
 
-
         encerrado = true;
 
         return docentes;

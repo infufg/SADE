@@ -41,6 +41,7 @@ public class TableViewUpdater extends Thread {
                 {
                     //TODO calcular nota e settar no lugar do zero. O objeto d tem todas as atividades.
                     tableView.getItems().add(new ObservableDocente(d.getId(),d.getNome(),0));
+
                 }
 
 
