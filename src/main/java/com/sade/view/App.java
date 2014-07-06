@@ -20,8 +20,7 @@ public class App extends Application {
         primaryStage.setTitle("Sistema de Avaliação");
 
         try {
-
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("ViewPrincipal.fxml"));
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("fx/ViewPrincipal.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
@@ -34,6 +33,10 @@ public class App extends Application {
         }
 
     }
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 
 }
