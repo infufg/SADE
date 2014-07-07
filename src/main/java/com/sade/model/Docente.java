@@ -41,7 +41,7 @@ public class Docente implements Comparable {
 
 	public void setAtividades(List<Atividade> atividades) {
 
-		this.atividades = this.atividades;
+		this.atividades = atividades;
 	}
 
 	public double getNota() {
