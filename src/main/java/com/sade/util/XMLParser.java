@@ -1,6 +1,8 @@
 package com.sade.util;
 
 import com.sade.model.Docente;
+import com.sade.service.NotaService;
+import com.sade.service.NotaServiceDelegate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -20,28 +22,26 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * Created by Vinicius on 25/06/2014.
  * Classe responsavel por ler um arquivo xml e ler
  */
-public class XMLParser extends Thread {
+public class XMLParser extends Thread implements NotaServiceDelegate {
 
 	//constantes com os nomes das tags
 	private final String DOCUMENT0 = "doc";
 	private final String DOCENTE = "docente";
 
 	private File file;
-	private ConcurrentSkipListSet<Docente> docentes;
 	private ConcurrentSkipListSet<Docente> novosDocentes;
 	private boolean terminouLeitura = false;
-
+	private int calculosEmProgresso = 0;
 
 	public XMLParser(File file) {
 
 		this.file = file;
-		this.docentes = new ConcurrentSkipListSet<>();
 		this.novosDocentes = new ConcurrentSkipListSet<>();
 	}
 
 	public void run() {
 
-		beginParse();
+		startParsing();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class XMLParser extends Thread {
 	 *
 	 * @return java.util.List<Docente> contendo todos os docentes encontrados.
 	 */
-	public ConcurrentSkipListSet<Docente> beginParse() {
+	public void startParsing() {
 
 		try {
 
@@ -74,8 +74,9 @@ public class XMLParser extends Thread {
 
 						DocentesXMLParser docentesXMLParser = new DocentesXMLParser(currentElement);
 						Docente novoDocente = docentesXMLParser.nodeParaDocente();
-						docentes.add(novoDocente);
-						novosDocentes.add(novoDocente);
+
+						calculosEmProgresso++;
+						new Thread(new NotaService(this, novoDocente)).start();
 					}
 				}
 
@@ -88,12 +89,10 @@ public class XMLParser extends Thread {
 		} finally {
 			terminouLeitura = true;
 		}
-
-		return docentes;
 	}
 
 	public boolean temNovosDocentes() {
-		return novosDocentes.size() > 0 || !terminouLeitura;
+		return novosDocentes.size() > 0 || !terminouLeitura || calculosEmProgresso > 0;
 	}
 
 	public synchronized List<Docente> getNovosDocentes() {
@@ -102,6 +101,12 @@ public class XMLParser extends Thread {
 		docentes.addAll(novosDocentes);
 		novosDocentes.removeAll(docentes);
 		return docentes;
+	}
+
+	@Override
+	public void notaDeDocenteCalculada(Docente docenteAtualizado) {
+		novosDocentes.add(docenteAtualizado);
+		calculosEmProgresso--;
 	}
 
 }

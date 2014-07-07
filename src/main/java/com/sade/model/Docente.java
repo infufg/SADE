@@ -1,7 +1,5 @@
 package com.sade.model;
 
-import com.sade.service.NotaService;
-
 import java.util.List;
 
 /**
@@ -12,6 +10,7 @@ public class Docente implements Comparable {
 
 	private String id;
 	private String nome;
+	private double nota;
 	private List<Atividade> atividades;
 
 	public String getId() {
@@ -44,8 +43,12 @@ public class Docente implements Comparable {
 		this.atividades = atividades;
 	}
 
+	public void setNota(double nota) {
+		this.nota = nota;
+	}
+
 	public double getNota() {
-		return new NotaService().calculeNota(atividades).doubleValue();
+		return nota;
 	}
 
 	@Override
