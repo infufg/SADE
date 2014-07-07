@@ -100,7 +100,7 @@ public class XMLParser extends Thread {
 
 		List<Docente> docentes = new ArrayList<>();
 		docentes.addAll(novosDocentes);
-		novosDocentes = new ConcurrentSkipListSet<>();
+		novosDocentes.removeAll(docentes);
 		return docentes;
 	}
 
