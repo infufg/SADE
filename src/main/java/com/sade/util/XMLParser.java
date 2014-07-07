@@ -11,138 +11,98 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * Created by Vinicius on 25/06/2014.
  * Classe responsavel por ler um arquivo xml e ler
  */
-public class XMLParser implements DocenteXMLParserDelegate {
+public class XMLParser extends Thread {
 
-    //constantes com os nomes das tags
-    private final String DOCUMENT0 = "doc";
-    private final String DOCENTE = "docente";
+	//constantes com os nomes das tags
+	private final String DOCUMENT0 = "doc";
+	private final String DOCENTE = "docente";
 
-    private ConcurrentSkipListSet<Docente> docentes;
-    private boolean encerrado; // para determinar o termino da leitura.
-
-    public boolean isEncerrado() { return encerrado; }
-
-    public ConcurrentSkipListSet<Docente> getDocentes() {
-        return docentes;
-    }
-
-    public XMLParser() {
-        this.docentes = new ConcurrentSkipListSet<Docente>();
-    }
-
-    /**
-     * Recupera todoas as atividades para cada docente contido no arquivo XML especificado.
-     *
-     * @return java.util.List<Docente> contendo todos os docentes encontrados.
-     * @throws java.io.FileNotFoundException
-     */
-    public ConcurrentSkipListSet<Docente> getDocentesXML(File file) throws FileNotFoundException {
-
-        FileInputStream inputStream = new FileInputStream(file);
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = null;
+	private File file;
+	private ConcurrentSkipListSet<Docente> docentes;
+	private ConcurrentSkipListSet<Docente> novosDocentes;
+	private boolean terminouLeitura = false;
 
 
-        try {
+	public XMLParser(File file) {
 
-            builder = factory.newDocumentBuilder();
-            Document document = builder.parse(inputStream);
-            document.normalize();
+		this.file = file;
+		this.docentes = new ConcurrentSkipListSet<>();
+		this.novosDocentes = new ConcurrentSkipListSet<>();
+	}
 
-            NodeList elements = document.getDocumentElement().getChildNodes();
+	public void run() {
 
-            if (elements != null) {
+		beginParse();
+	}
 
-                encerrado = false;
+	/**
+	 * Recupera todoas as atividades para cada docente contido no arquivo XML especificado.
+	 *
+	 * @return java.util.List<Docente> contendo todos os docentes encontrados.
+	 */
+	public ConcurrentSkipListSet<Docente> beginParse() {
 
-                for (int i = 0; i < elements.getLength(); i++) {
+		try {
 
-                    Node currentElement = elements.item(i);
+			FileInputStream inputStream = new FileInputStream(file);
 
-                    if (currentElement.getNodeName().equals(DOCENTE)) {
-                       //delega a execução para uma outra thread e seque o loop
-                       new DocentesXMLParser(currentElement,this).start();
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = null;
 
-                    }
-                }
+			builder = factory.newDocumentBuilder();
+			Document document = builder.parse(inputStream);
+			document.normalize();
 
-            }
+			NodeList elements = document.getDocumentElement().getChildNodes();
 
-        } catch (ParserConfigurationException e) {
+			if (elements != null) {
 
-            e.printStackTrace();
+				for (int i = 0; i < elements.getLength(); i++) {
 
-        } catch (SAXException e) {
+					Node currentElement = elements.item(i);
 
-            e.printStackTrace();
+					if (currentElement.getNodeName().equals(DOCENTE)) {
 
-        } catch (IOException e) {
+						DocentesXMLParser docentesXMLParser = new DocentesXMLParser(currentElement);
+						Docente novoDocente = docentesXMLParser.nodeParaDocente();
+						docentes.add(novoDocente);
+						novosDocentes.add(novoDocente);
+					}
+				}
 
-            e.printStackTrace();
+			}
 
-        }
+		} catch (ParserConfigurationException | SAXException  | IOException e) {
 
-        encerrado = true;
+			e.printStackTrace();
 
-        return docentes;
-    }
+		} finally {
+			terminouLeitura = true;
+		}
 
-    /**
-     * Sobrecarga.Recupera todas as atividades para cada docente contido no arquivo XML especificado.
-     *
-     * @return List<Docente> contendo todos os docentes encontrados.
-     * @throws java.io.FileNotFoundException
-     */
-    public ConcurrentSkipListSet<Docente> getDocentesXML(String filePath) throws FileNotFoundException {
+		return docentes;
+	}
 
-        File file = new File(filePath);
+	public boolean temNovosDocentes() {
+		return novosDocentes.size() > 0 || !terminouLeitura;
+	}
 
-        if (file.exists()) {
-            return getDocentesXML(file);
-        } else {
-            throw new FileNotFoundException();
-        }
+	public synchronized List<Docente> getNovosDocentes() {
 
-    }
+		List<Docente> docentes = new ArrayList<>();
+		docentes.addAll(novosDocentes);
+		novosDocentes = new ConcurrentSkipListSet<>();
+		return docentes;
+	}
 
-
-    public Node encontraPrimeiroElementoPorNome(Node element, String name) throws NoSuchElementException {
-
-        NodeList elements = element.getChildNodes();
-
-        if (elements != null) {
-
-            for (int i = 0; i < elements.getLength(); i++) {
-
-               Node currentElement =  elements.item(i);
-
-                if (currentElement.getNodeName().equals(name)) {
-                    //retorna a primeira ocorrencia do nó procurado
-                    return currentElement;
-
-                }
-            }
-        }
-
-        throw new NoSuchElementException();
-
-    }
-
-    @Override
-    public void parsedDocente(Docente docente) {
-
-        docentes.add(docente);
-
-    }
 }
 

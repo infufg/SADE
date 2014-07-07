@@ -25,13 +25,13 @@ public class ViewPrincipalController {
     @FXML
     private ProgressBar progressBar; //será atulizada a partir da quantidade de professores avaliados.
     @FXML
-    private TableView tableView;
+    private TableView<ObservableDocente> tableView;
     @FXML
-    private TableColumn columnId;
+    private TableColumn<ObservableDocente, String> columnId;
     @FXML
-    private TableColumn columnNome;
+    private TableColumn<ObservableDocente, String> columnNome;
     @FXML
-    private TableColumn columnNota;
+    private TableColumn<ObservableDocente, String> columnNota;
     @FXML
     private TextField textFieldPathArquivo;
 
