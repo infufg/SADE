@@ -1,5 +1,6 @@
 package com.sade.view;
 
+import com.sade.controllers.AtividadeController;
 import com.sade.model.Area;
 import com.sade.model.Atividade;
 import com.sade.service.AreaService;
@@ -17,6 +18,23 @@ import java.util.Scanner;
  */
 public class Main {
 	public static void main(String[] args) {
+
+        AtividadeController atividadeController = new AtividadeController();
+
+
+        for (int i = 1; i < 11; i++) {
+            Atividade atividade = new Atividade();
+
+            atividade.setCodigo(String.valueOf(i));
+            atividade.setPontuacao(20.0);
+            atividade.setDivisor(2);
+            atividade.setDescricao("Atividade de teste");
+
+            atividadeController.save(atividade);
+
+        }
+
+        /*
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Informe\n1 - Para testar a AreaService\n"
 				                   + "2 - Para testar a AtividadeService\n"
@@ -65,6 +83,7 @@ public class Main {
 				break;
 			}
 		}
+		*/
 	}
 	public static void testarInsertAreaService(){
 		boolean inserirMais = true;
