@@ -13,38 +13,27 @@ import java.util.List;
  * Created by viniciusmaboni
  * Classe responsável por tratar o XML de um docente específico;
  */
-public class DocentesXMLParser extends Thread {
+public class DocentesXMLParser {
 
     private final String ATIVIDADE = "atividade";
     private final String NOME = "nome";
     private final String QUANTIDADE = "quantidade";
     private final String CODIGO = "codigo";
 
-    private Node nodeDocente;
-    private DocenteXMLParserDelegate delegate;
+    private Node node;
 
-    public DocentesXMLParser(Node nodeDocente, DocenteXMLParserDelegate delegate) {
+    public DocentesXMLParser(Node nodeDocente) {
 
-        this.nodeDocente = nodeDocente;
-
-        this.delegate = delegate;
-
-    }
-
-    @Override
-    public void run() {
-
-        nodeParaDocente(nodeDocente);
+        this.node = nodeDocente;
 
     }
 
     /**
      * Lê um nó xml e converte para um objeto com.sade.model.Docente
      *
-     * @param node só de um docente.
      * @return com.sade.model.Docente
      */
-    public void nodeParaDocente(Node node) {
+    public Docente nodeParaDocente() {
 
         Docente docente = new Docente();
         List<Atividade> atividades = new ArrayList<Atividade>();
@@ -71,8 +60,8 @@ public class DocentesXMLParser extends Thread {
         }
 
         docente.setAtividades(atividades);
-        delegate.parsedDocente(docente);
 
+		return docente;
     }
 
     /**

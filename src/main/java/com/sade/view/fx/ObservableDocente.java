@@ -1,6 +1,10 @@
 package com.sade.view.fx;
 
-import javafx.beans.property.*;
+import com.sade.model.Docente;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * Created by Vinicius on 03/07/2014.
@@ -8,54 +12,22 @@ import javafx.beans.property.*;
  */
 public class ObservableDocente {
 
-    private StringProperty id;
-    private StringProperty nome;
-    private DoubleProperty nota;
+	private Docente docente;
 
-    public ObservableDocente(String id, String nome, double nota) {
-
-        this.id = new SimpleStringProperty(id);
-        this.nome = new SimpleStringProperty(nome);
-        this.nota = new SimpleDoubleProperty(nota);
-
+    public ObservableDocente(Docente docente) {
+		this.docente = docente;
     }
 
-    public StringProperty idProperty()
-    {
-        return id;
+    public StringProperty idProperty() {
+        return new SimpleStringProperty(docente.getId());
     }
 
     public StringProperty nomeProperty()
     {
-        return nome;
+        return new SimpleStringProperty(docente.getNome());
     }
 
-    public DoubleProperty notaProperty() {return nota;}
-
-    //getters e setters comuns
-    public String getId() {
-        return id.get();
+    public DoubleProperty notaProperty() {
+	    return new SimpleDoubleProperty(0);
     }
-
-    public void setId(String id) {
-        this.id.setValue(id);
-    }
-
-    public String getNome() {
-        return nome.get();
-    }
-
-    public void setNome(String nome) {
-        this.nome.setValue(nome);
-    }
-
-    public double getNota() {
-        return nota.get();
-    }
-
-    public void setNota(double nota) {
-        this.nota.setValue(nota);
-    }
-
-
 }
