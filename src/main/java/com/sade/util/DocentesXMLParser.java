@@ -1,5 +1,6 @@
 package com.sade.util;
 
+import com.sade.controllers.AtividadeController;
 import com.sade.model.Atividade;
 import com.sade.model.Docente;
 import org.w3c.dom.NamedNodeMap;
@@ -22,9 +23,13 @@ public class DocentesXMLParser {
 
     private Node node;
 
+    private AtividadeController atividadeController;
+
     public DocentesXMLParser(Node nodeDocente) {
 
         this.node = nodeDocente;
+
+        atividadeController = new AtividadeController();
 
     }
 
@@ -78,6 +83,7 @@ public class DocentesXMLParser {
 
         //pega os atributos da tag e usa como valores pra atividade
         atividade.setCodigo(map.getNamedItem(CODIGO).getTextContent());
+        atividade = atividadeController.get(new Long(atividade.getId()));
         int quantidade = Integer.parseInt(map.getNamedItem(QUANTIDADE).getTextContent());
         atividade.setQuantidade(quantidade);
 
