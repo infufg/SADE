@@ -6,7 +6,6 @@ import com.sade.model.Atividade;
 import com.sade.service.AreaService;
 import com.sade.service.AtividadeService;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,7 +21,7 @@ public class Main {
         AtividadeController atividadeController = new AtividadeController();
 
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 0; i < 11; i++) {
             Atividade atividade = new Atividade();
 
             atividade.setCodigo(String.valueOf(i));
