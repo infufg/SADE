@@ -80,10 +80,9 @@ public class DocentesXMLParser {
         Atividade atividade = new Atividade();
 
         NamedNodeMap map = node.getAttributes();
-
+	    Long codigo = Long.parseLong(map.getNamedItem(CODIGO).getTextContent());
         //pega os atributos da tag e usa como valores pra atividade
-        atividade.setCodigo(map.getNamedItem(CODIGO).getTextContent());
-        atividade = atividadeController.get(new Long(atividade.getId()));
+        atividade = atividadeController.get(codigo);
         int quantidade = Integer.parseInt(map.getNamedItem(QUANTIDADE).getTextContent());
         atividade.setQuantidade(quantidade);
 
