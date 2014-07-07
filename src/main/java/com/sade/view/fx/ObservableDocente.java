@@ -1,6 +1,5 @@
 package com.sade.view.fx;
 
-import com.sade.model.Atividade;
 import com.sade.model.Docente;
 import com.sade.service.NotaService;
 import javafx.beans.property.DoubleProperty;
@@ -17,26 +16,9 @@ import java.math.BigDecimal;
 public class ObservableDocente {
 
 	private Docente docente;
-    private DoubleProperty notaDoubleProperty;
-
 
     public ObservableDocente(Docente docente) {
-
 		this.docente = docente;
-
-        //calcula a nota do docente
-        NotaService notaService = new NotaService();
-
-        double result = 0;
-        for(Atividade a: docente.getAtividades()) {
-
-           result += notaService.calculaNotaDeAtividade(a).doubleValue();
-
-        }
-
-        notaDoubleProperty.setValue(result);
-
-
     }
 
     public StringProperty idProperty() {
@@ -49,6 +31,9 @@ public class ObservableDocente {
     }
 
     public DoubleProperty notaProperty() {
-	    return notaDoubleProperty;
+
+	    NotaService service = new NotaService();
+	    BigDecimal nota = service.calculeNota(docente.getAtividades());
+	    return new SimpleDoubleProperty(nota.doubleValue());
     }
 }
