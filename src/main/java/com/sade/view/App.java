@@ -1,10 +1,12 @@
 package com.sade.view;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -15,9 +17,9 @@ import java.io.IOException;
 public class App extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(final Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("Sistema de Avaliação");
+       primaryStage.setTitle("Sistema de Avaliação");
 
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("fx/ViewPrincipal.fxml"));
@@ -25,6 +27,15 @@ public class App extends Application {
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    System.out.println("Stage Fechando");
+                    primaryStage.close();
+                }
+            });
+
+
 
         } catch (IOException e) {
 
