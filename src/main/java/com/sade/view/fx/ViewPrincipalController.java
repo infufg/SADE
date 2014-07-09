@@ -46,7 +46,6 @@ public class ViewPrincipalController {
      */
     @FXML
     private void initialize() {
-
         //oculta o botão de erros.
         textErros.setVisible(false);
 
@@ -82,11 +81,12 @@ public class ViewPrincipalController {
     {
         if(arquivoSade != null)
         {
-            TableViewUpdater tableViewUpdater = new TableViewUpdater(tableView,arquivoSade);
+           // progressBar = new ProgressBar(-1);
+            progressBar.setProgress(-1);
+            TableViewUpdater tableViewUpdater = new TableViewUpdater(tableView,arquivoSade, progressBar);
             tableViewUpdater.start();
         }
     }
-
     /**
      * Configura os valores para os campos da tableview
      */

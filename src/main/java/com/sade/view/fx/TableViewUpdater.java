@@ -3,6 +3,7 @@ package com.sade.view.fx;
 import com.sade.model.Docente;
 import com.sade.service.NotaService;
 import com.sade.util.XMLParser;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
 
 import java.io.File;
@@ -15,10 +16,11 @@ public class TableViewUpdater extends Thread {
 
 	private TableView<ObservableDocente> tableView;
 	private File arquivoSade;
-
-	public TableViewUpdater(TableView<ObservableDocente> tableView, File arquivoSade) {
+    private ProgressBar progressBar;
+	public TableViewUpdater(TableView<ObservableDocente> tableView, File arquivoSade,  ProgressBar barra) {
 
 		this.tableView = tableView;
+        this.progressBar = barra;
 		this.arquivoSade = arquivoSade;
 	}
 
@@ -41,7 +43,7 @@ public class TableViewUpdater extends Thread {
 			}
 
 		}
-
+        progressBar.setProgress(1);
 	}
 
 }
